@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getRecipeName, getRecipes } from '../actions'
+import { Link } from 'react-router-dom'
 
 export default function NavBar({ page }) {
     const dispatch = useDispatch()
@@ -30,6 +31,10 @@ export default function NavBar({ page }) {
                 <button type='submit' onClick={(e) => handleClick(e)}>Search</button>
 
                 <button type='reset' onClick={(e) => handleClickReset(e)}>Restart</button>
+
+                <Link to={'/recipes'}>
+                    <button>Create recipe</button>
+                </Link>
             </nav>
         </div >
     )

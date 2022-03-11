@@ -13,7 +13,7 @@ export default function Pagination({ recipesCopy, page }) {
                 <ul>
                     {
                         pages.map((e, i) => (
-                            <li key={i.toString()}>
+                            <li key={i}>
                                 <button onClick={() => { page(e) }}>{e}</button>
                             </li>
                         ))

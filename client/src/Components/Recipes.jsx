@@ -13,10 +13,9 @@ export default function Recipes({ recipesCopy, currentPage }) {
                 pagesRecipes.map(e => {
                     return <Recipe
                         title={e.title}
-                        score={e.score}
-                        healthScore={e.healthScore}
                         image={e.image}
                         diets={e.diets}
+                        id={e.id}
                         key={e.id}
                     />
                 })

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { orderByName } from '../actions'
 
@@ -14,7 +14,7 @@ export default function OrderByName({ ordered }) {
     return (
         <div>
             <select onChange={(e) => handleOrderName(e)}>
-                <option >Select order...</option>
+                <option >Select order</option>
                 <option value='asc'>Ascendent</option>
                 <option value='des'>Descendent</option>
             </select>

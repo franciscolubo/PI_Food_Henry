@@ -8,8 +8,8 @@ router.get('/', async (req, res) => {
     try {
         const diets = await getAllInfo()
         const types = diets.map(e => e.diets)
-        const newTypes = types.flat().concat('vegetarian', 'ketogenic')
-        const finalTypes = [...new Set(newTypes)]
+        const newTypes = [...new Set(types)]
+        const finalTypes = newTypes.flat().concat('vegetarian', 'ketogenic')
 
         for (let i in finalTypes) {
             Diet.findOrCreate({

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipes, orderByName } from "../actions/index.js";
+import { getDiets, getRecipes } from "../actions/index.js";
 import Pagination from "./Pagination.jsx";
 import Recipes from './Recipes.jsx'
 import NavBar from "./NavBar.jsx";
 import OrderByName from "./OrderByName.jsx";
-import OrderByScore from './OrderByScore.jsx'
+import OrderByDiets from "./OrderByDiets.jsx";
+import OrderByScore from "./OrderByScore.jsx";
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -19,11 +20,11 @@ export default function Home() {
 
     const ordered = (e) => {  // Es el encargado de modificar el order y permitir hacer un componentUpdate
         setOrder(e)
-        console.log(e)
     }
 
     useEffect(() => {
         dispatch(getRecipes())
+        dispatch(getDiets())
     }, [dispatch])
 
 
@@ -35,10 +36,15 @@ export default function Home() {
                 />
             </div>
             <div>
-                <OrderByName
+                Order for name: <OrderByName
                     ordered={ordered}
                 />
-                <OrderByScore />
+                Order for score: <OrderByScore
+                    ordered={ordered}
+                />
+                Order by diet: <OrderByDiets
+                    ordered={ordered}
+                />
             </div>
             <div>
                 <Recipes
