@@ -36,15 +36,11 @@ export default function CreateRecipe() {
 
     const handleClick = (e) => {
         e.preventDefault()
-        const step = e.lenght;
-        (step === recipe.steps)
-            ? step = step - 1
-            : setRecipe({
-                ...recipe,
-                steps: [...recipe.steps, e.target.value]
-            })
-        console.log(step)
-        console.log(recipe.steps)
+        const steps = recipe.steps.toString().split(",")
+        setRecipe({
+            ...recipe,
+            steps: [...recipe.steps, steps]
+        })
     }
 
     const handleDelete = (diet) => {
@@ -71,11 +67,11 @@ export default function CreateRecipe() {
         <>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <h2>Create recipe</h2>
-                <label>Title: <input placeholder='Title of recipe' type='text' name='title' onChange={handleChange}></input></label>
-                <label>Score: <input placeholder='Score' min='0' max='100' type='text' name='score' onChange={handleChange}></input></label>
-                <label>Health Score: <input placeholder='Health score' min='0' max='100' type='text' name='healthScore' onChange={handleChange}></input></label>
-                <label>Image: <input placeholder='Image URL' type='url' name='image' onChange={handleChange}></input></label>
-                <label>Summary: <input placeholder='Summary' type='textarea' name='summary' onChange={handleChange} required></input></label>
+                <label>Title: <input placeholder='Title of recipe' type='text' name='title' onChange={handleChange} value={recipe.title} required></input></label>
+                <label>Score: <input placeholder='Score' min='0' max='100' type='text' name='score' onChange={handleChange} value={recipe.score} required></input></label>
+                <label>Health Score: <input placeholder='Health score' min='0' max='100' type='text' name='healthScore' onChange={handleChange} value={recipe.healthScore} required></input></label>
+                <label>Image: <input placeholder='Image URL' type='url' name='image' onChange={handleChange} value={recipe.image} required></input></label>
+                <label>Summary: <input placeholder='Summary' type='textarea' name='summary' onChange={handleChange} value={recipe.summary} required></input></label>
                 <select onChange={handleSelect}>
                     <option>Diets types</option>
                     {
@@ -89,7 +85,7 @@ export default function CreateRecipe() {
             </form>
 
             <form onSubmit={handleClick}>
-                <label>Steps: <input placeholder='Add step' type='text' name='steps' onChange={handleClick}></input></label>
+                <label>Steps: <input placeholder='Add step' type='text' name='steps' onChange={handleChange}></input></label>
                 <button type='submit'>Add step</button>
             </form>
 
