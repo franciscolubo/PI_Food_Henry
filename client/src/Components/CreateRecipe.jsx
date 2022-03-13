@@ -51,8 +51,7 @@ export default function CreateRecipe() {
 
     const addStep = (e) => {
         e.preventDefault()
-        console.log(e)
-        if (e.target[0].value.length !== 0) {
+        if (e.target[0].value.length !== 0) { // SI NO TENGO NADA, NO AGREGO NADA
             setRecipe({
                 ...recipe,
                 steps: [...recipe.steps, e.target[0].value]
@@ -119,12 +118,13 @@ export default function CreateRecipe() {
                         <li>
                             {
                                 (recipe.diets.length !== 0)
-                                    ? recipe.diets.map((e, i) =>
-                                        <p key={i}>
+                                    ? recipe.diets.map((e, i) => {
+
+                                        return <p key={i}>
                                             <button onClick={() => handleDelete({ e }, "diets")}>X</button>
                                             {e}
                                         </p>
-                                    )
+                                    })
                                     : <p>Aun no se agrego ningun tipo de dieta</p>
                             }
                         </li>
@@ -135,12 +135,13 @@ export default function CreateRecipe() {
                         <li>
                             {
                                 (recipe.steps.length !== 0)
-                                    ? recipe.steps.map((e, i) =>
-                                        <p key={i}>
+                                    ? recipe.steps.map((e, i) => {
+
+                                        return <p key={i}>
                                             <button onClick={() => handleDelete({ e }, "steps")}>X</button>
                                             {e}
                                         </p>
-                                    )
+                                    })
                                     : <p>No se agrego ningun paso aun</p>
                             }
                         </li>

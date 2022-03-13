@@ -63,7 +63,7 @@ export function recipeDetail(recipeId) {
 }
 
 export function addRecipeDb(recipe) {
-    return async function(dispatch) {
+    return async function (dispatch) {
         const addRecipe = await axios.post('http://localhost:3001/recipes/', recipe)
         return addRecipe
     }
