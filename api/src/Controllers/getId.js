@@ -33,7 +33,7 @@ const getDbId = async(id) => {
                     attributes: []
                 }
             }
-        })
+        })  
     } catch {
         return error
     }
@@ -42,7 +42,8 @@ const getDbId = async(id) => {
 const getAllId = async(id) => {
     const apiId = await getApiId(id)
     const dbId = await getDbId()
-    return await Promise.all([apiId, dbId])
+    const [Api, Db] = await Promise.all([apiId, dbId])
+    return Api || Db;
 }
 
 module.exports = {

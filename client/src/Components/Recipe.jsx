@@ -4,15 +4,12 @@ import { Link } from 'react-router-dom'
 export default function Recipe({ title, image, diets, id }) {
     let bool = false
     console.log(diets)
-    diets.map(e => {
+    bool = diets.map(e => {
         if (e.hasOwnProperty('name')) {
             return true;
-        } else {
-            return false;
         }
     })
-    console.log(bool)
-
+    console.log(bool[0])
 
     return (
         <>
