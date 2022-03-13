@@ -1,9 +1,11 @@
 import React from 'redux'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
+import { addRecipeDb } from '../actions'
 
 export default function CreateRecipe() {
+    const dispatch = useDispatch()
     const diets = useSelector(state => state.diets)
     const [recipe, setRecipe] = useState({
         title: "",
@@ -17,7 +19,6 @@ export default function CreateRecipe() {
 
     const handleChange = (e) => {
         e.preventDefault()
-        console.log({ ...recipe })
         setRecipe({
             ...recipe,
             [e.target.name]: e.target.value
@@ -34,24 +35,36 @@ export default function CreateRecipe() {
             })
     }
 
-    const handleClick = (e) => {
-        e.preventDefault()
-        const steps = recipe.steps.toString().split(",")
-        setRecipe({
-            ...recipe,
-            steps: [...recipe.steps, steps]
-        })
+    const handleDelete = (element, option) => {
+        if (option === 'diets') {
+            setRecipe({
+                ...recipe,
+                diets: recipe.diets.filter(e => e !== element.e)
+            })
+        } else {
+            setRecipe({
+                ...recipe,
+                steps: recipe.steps.filter(e => e !== element.e)
+            })
+        }
     }
 
-    const handleDelete = (diet) => {
-        setRecipe({
-            ...recipe,
-            diets: recipe.diets.filter(e => e !== diet.e)
-        })
+    const addStep = (e) => {
+        e.preventDefault()
+        console.log(e)
+        if (e.target[0].value.length !== 0) {
+            setRecipe({
+                ...recipe,
+                steps: [...recipe.steps, e.target[0].value]
+            })
+        }
+        e.target[0].value = "" // La utilizo para borrar el contendio de mi input cada vez que agrego un paso
     }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log({ ...recipe })
+        dispatch(addRecipeDb(recipe))
         setRecipe({
             title: "",
             score: "",
@@ -84,8 +97,8 @@ export default function CreateRecipe() {
                 <button type='submit'>Create Recipe</button>
             </form>
 
-            <form onSubmit={handleClick}>
-                <label>Steps: <input placeholder='Add step' type='text' name='steps' onChange={handleChange}></input></label>
+            <form onSubmit={addStep}>
+                <label>Steps: <input placeholder='Add step' type='text'></input></label>
                 <button type='submit'>Add step</button>
             </form>
 
@@ -106,13 +119,29 @@ export default function CreateRecipe() {
                         <li>
                             {
                                 (recipe.diets.length !== 0)
-                                    ? recipe.diets.map((e) =>
-                                        <p>
-                                            <button onClick={() => handleDelete({ e })}>X</button>
+                                    ? recipe.diets.map((e, i) =>
+                                        <p key={i}>
+                                            <button onClick={() => handleDelete({ e }, "diets")}>X</button>
                                             {e}
                                         </p>
                                     )
                                     : <p>Aun no se agrego ningun tipo de dieta</p>
+                            }
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            {
+                                (recipe.steps.length !== 0)
+                                    ? recipe.steps.map((e, i) =>
+                                        <p key={i}>
+                                            <button onClick={() => handleDelete({ e }, "steps")}>X</button>
+                                            {e}
+                                        </p>
+                                    )
+                                    : <p>No se agrego ningun paso aun</p>
                             }
                         </li>
                     </ul>
