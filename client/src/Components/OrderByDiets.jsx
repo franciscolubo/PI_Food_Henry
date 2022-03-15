@@ -17,8 +17,8 @@ export default function OrderByDiets({ ordered }) {
             <select onChange={(e) => handleClick(e)}>
                 <option value='all'>All diets</option>
                 {
-                    diets.map((e, i) => {
-                        return <option key={i} value={e.name}>{e.name}</option>
+                    diets.map((e) => {
+                        return <option key={e.id} value={e.name}>{e.name}</option>
                     })
                 }
             </select>

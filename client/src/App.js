@@ -8,7 +8,7 @@ import CreateRecipe from './Components/CreateRecipe.jsx'
 function App() {
   return (
     <BrowserRouter>
-      <div>
+      <div className='max-width'>
       <Switch>
         <Route exact path ='/' element={<LandingPage />} />
         <Route exact path ='/home' element={<Home />} />

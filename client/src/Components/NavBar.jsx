@@ -7,6 +7,14 @@ export default function NavBar({ page }) {
     const dispatch = useDispatch()
     const [title, setTitle] = useState("")
 
+    const validation = () => {
+        if (title.length !== 0) {
+            if (isNaN(title)) {
+                return true
+            } else alert('No existe ninguna receta con titulo numerico')
+        } else alert('Debe ingresar algun nombre')
+    }
+
     const handleChange = (e) => {
         e.preventDefault();
         setTitle(e.target.value)
@@ -15,7 +23,9 @@ export default function NavBar({ page }) {
     const handleClick = (e) => {
         e.preventDefault();
         page(1)
-        dispatch(getRecipeName(title))
+        if (validation()) {
+            dispatch(getRecipeName(title))
+        }
     }
 
     const handleClickReset = (e) => {

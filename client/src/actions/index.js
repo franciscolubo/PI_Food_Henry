@@ -64,8 +64,15 @@ export function recipeDetail(recipeId) {
 
 export function addRecipeDb(recipe) {
     return async function (dispatch) {
-        const addRecipe = await axios.post('http://localhost:3001/recipes/', recipe)
+        const addRecipe = await axios.post('http://localhost:3001/recipes/recipe', recipe)
         return addRecipe
+    }
+}
+
+export function DbOrApiActions(payload) {
+    return {
+        type: '@db_or_api',
+        payload
     }
 }
 

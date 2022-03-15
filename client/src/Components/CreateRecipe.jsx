@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import { addRecipeDb } from '../actions'
 
+
+
 export default function CreateRecipe() {
     const dispatch = useDispatch()
     const diets = useSelector(state => state.diets)
@@ -16,6 +18,27 @@ export default function CreateRecipe() {
         diets: [],
         steps: []
     })
+
+    const validation = () => {
+        let title, score, healthScore, steps, summary
+        if (recipe.title.length !== 0) {
+            title = true
+        } else alert('Ingresa un titulo')
+        if (recipe.score >= 0 && recipe.score <= 100) {
+            score = true
+        } else alert('Debe ingresar un score como numero, ademas estar entre 0 6 100')
+        if (recipe.healthScore >= 0 && recipe.score <= 100) {
+            healthScore = true
+        } else alert('Debe ingresar un health score como numero, ademas estar entre 0 6 100')
+        if (recipe.steps.length !== 0) {
+            steps = true
+        } else alert('Debe ingresar por lo menos un paso')
+        if (recipe.summary.length !== 0) {
+            summary = true
+        } else alert('Debe ingresar un summary')
+        if (title && score && healthScore && steps && summary)
+            return true
+    }
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -62,8 +85,10 @@ export default function CreateRecipe() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log({ ...recipe })
-        dispatch(addRecipeDb(recipe))
+        if (validation()) {
+            dispatch(addRecipeDb(recipe))
+            console.log(recipe)
+        }
         setRecipe({
             title: "",
             score: "",
@@ -97,6 +122,7 @@ export default function CreateRecipe() {
             </form>
 
             <form onSubmit={addStep}>
+                <p></p>
                 <label>Steps: <input placeholder='Add step' type='text'></input></label>
                 <button type='submit'>Add step</button>
             </form>
@@ -139,7 +165,7 @@ export default function CreateRecipe() {
 
                                         return <p key={i}>
                                             <button onClick={() => handleDelete({ e }, "steps")}>X</button>
-                                            {e}
+                                            {i + 1}. {e}
                                         </p>
                                     })
                                     : <p>No se agrego ningun paso aun</p>
@@ -148,10 +174,6 @@ export default function CreateRecipe() {
                     </ul>
                 </div>
             </div>
-
-
-
-
 
 
 

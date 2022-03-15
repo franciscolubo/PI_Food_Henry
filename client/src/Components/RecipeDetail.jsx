@@ -8,8 +8,7 @@ import { Link } from 'react-router-dom'
 export default function RecipeDetail() {
     const dispatch = useDispatch()
     const { idRecipe } = useParams()
-    const recipe_array = useSelector(state => state.detail)
-    const recipe = recipe_array[0]
+    const recipe = useSelector(state => state.detail)
 
     useEffect(() => {
         dispatch(recipeDetail(idRecipe))
@@ -18,8 +17,8 @@ export default function RecipeDetail() {
     return (
         <div>
             {
-                (recipe_array.length === 0)
-                    ? <p>ESTAMOS CARGANDO TODO HIJO DE TU PUTA MADRE, ESPERATE TANTITO GUEY</p>
+                (recipe.length === 0)
+                    ? <p>Estamos cargando todo</p>
                     :
                     <div>
                         <img alt='img' src={recipe.image} />
@@ -31,7 +30,7 @@ export default function RecipeDetail() {
                             <div>
                                 {
                                     recipe.diets?.map((e, i) => {
-                                        return <p key={i}>{e}</p>
+                                        return <p key={i + 1}>{e}</p>
                                     })
                                 }
                             </div>

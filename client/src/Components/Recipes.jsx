@@ -8,7 +8,7 @@ export default function Recipes({ recipesCopy, currentPage }) {
     const pagesRecipes = recipesCopy.slice(firstRecipe, lastRecipe) // 27, 36
 
     return (
-        <div>
+        <div className='cards'>
             {
                 pagesRecipes.map(e => {
                     return <Recipe

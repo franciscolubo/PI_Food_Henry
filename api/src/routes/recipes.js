@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const { Op } = require('sequelize')
 const { getAllInfo } = require('../Controllers/getAll')
 const { getAllId } = require('../Controllers/getId')
 const { Recipe, Diet } = require('../db')
@@ -26,9 +27,7 @@ router.get('/:idRecipe', async (req, res) => {
     try {
         const { idRecipe } = req.params
         if (idRecipe) {  
-            const newId = parseInt(idRecipe)
-            const recipeId = await getAllId(newId)
-            
+            const recipeId = await getAllId(idRecipe)
             res.json(recipeId)
         } else {
             res.send('No se ingreso ningun ID')
@@ -38,7 +37,7 @@ router.get('/:idRecipe', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/recipe', async (req, res) => {
     let { title, summary, healthScore, image, score, diets, steps } = req.body
     try {
         let newRecipe = await Recipe.create({
@@ -49,12 +48,14 @@ router.post('/', async (req, res) => {
             steps,
             image,
         })
-        
-        let newDiet = await Diet.findOne({
-                where: { name: diets }
+        let newDiets = await Diet.findAll({
+            where: {
+                name: diets
+            }
         })
-        newRecipe.addDiets(newDiet)
-        res.status(200).json(newRecipe)
+        
+        newRecipe.addDiet(newDiets)
+        res.status(201).json(newRecipe)
     } catch (error) {
         res.send(error)
     }

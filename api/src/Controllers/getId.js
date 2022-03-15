@@ -34,16 +34,21 @@ const getDbId = async(id) => {
                 }
             }
         })  
-    } catch {
+    } catch (error){
         return error
     }
 }
 
 const getAllId = async(id) => {
-    const apiId = await getApiId(id)
-    const dbId = await getDbId()
-    const [Api, Db] = await Promise.all([apiId, dbId])
-    return Api || Db;
+    const validacion = id.length
+
+    if(validacion > 7) {
+        const dbId = await getDbId(id)
+        return dbId
+    } else {
+        const apiId = await getApiId(id)
+        return apiId
+    }
 }
 
 module.exports = {

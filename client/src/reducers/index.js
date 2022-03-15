@@ -10,10 +10,20 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
         case '@get_recipes':
+            let newRecipe = action.payload
+            for (let i = 0; i < newRecipe.length; i++) {
+                if (newRecipe[i].hasOwnProperty('isDb')) {
+                    let diets = []
+                    newRecipe[i].diets.map(e => {
+                        diets.push(e.name)
+                    })
+                    newRecipe[i].diets = diets
+                }
+            }
             return{
                 ...state,
-                recipes: action.payload,
-                recipesCopy: action.payload
+                recipes: newRecipe,
+                recipesCopy: newRecipe
             }
             
         case '@get_recipes_name':
@@ -23,7 +33,7 @@ const rootReducer = (state = initialState, action) => {
             }
 
         case '@order_by_name':
-            let orderNameList = state.recipesCopy.sort(function (a, b) {
+            let orderNameList = state.recipes.sort(function (a, b) {
                 if (a.title.toLowerCase() > b.title.toLowerCase()){
                     return 1
                 } else if (a.title.toLowerCase() < b.title.toLowerCase()) {
@@ -40,7 +50,7 @@ const rootReducer = (state = initialState, action) => {
             }
         
         case '@order_by_score':
-            let orderScoreList = state.recipesCopy.sort(function (a, b) {
+            let orderScoreList = state.recipes.sort(function (a, b) {
                 if (a.score > b.score){
                     return 1
                 } else if (a.score < b.score) {
@@ -70,10 +80,33 @@ const rootReducer = (state = initialState, action) => {
             }
         
         case '@recipe_detail':
+            let newRecipeDetail = action.payload
+            if (action.payload.hasOwnProperty('isDb')) {
+                let diets = []
+                newRecipeDetail.diets.map(e => {
+                    diets.push(e.name)
+                })
+                newRecipeDetail.diets = diets
+            }
             return {
                 ...state,
-                detail: action.payload
+                detail: newRecipeDetail
             }
+
+            case '@db_or_api':
+                let array = []
+                if (action.payload === 'db') {
+                    array = state.recipes.filter(e => e.isDb)
+                } else if (action.payload === 'api'){
+                    array = state.recipes.filter(e => !e.isDb)
+                } else {
+                    array = [...state.recipes]
+                }
+
+                return {
+                    ...state,
+                    recipesCopy: array
+                }
 
         default: return {
             ...state

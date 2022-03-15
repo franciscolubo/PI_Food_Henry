@@ -7,6 +7,7 @@ import NavBar from "./NavBar.jsx";
 import OrderByName from "./OrderByName.jsx";
 import OrderByDiets from "./OrderByDiets.jsx";
 import OrderByScore from "./OrderByScore.jsx";
+import DbOrApi from "./DbOrApi.jsx";
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -24,8 +25,12 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getRecipes())
-        dispatch(getDiets())
+
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getDiets())
+    }, [])
 
 
     return (
@@ -38,12 +43,17 @@ export default function Home() {
             <div>
                 Order for name: <OrderByName
                     ordered={ordered}
+                    page={page}
                 />
                 Order for score: <OrderByScore
                     ordered={ordered}
+                    page={page}
                 />
                 Order by diet: <OrderByDiets
                     ordered={ordered}
+                />
+                Recipe for Db or Api: <DbOrApi
+                    page={page}
                 />
             </div>
             <div>

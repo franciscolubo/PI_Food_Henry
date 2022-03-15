@@ -31,11 +31,15 @@ const getDataBase = async () => {
         return await Recipe.findAll({
             include: {
                 model: Diet,
-                as: ['name'],
+                attributes: ['name'],
+                through:{
+                    attributes: [],
+                }
             }
-        }); 
+        });
+        
     } catch (error) {
-        return undefined
+        console.log(error)
     }
 }
 

@@ -5,9 +5,58 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.cards {
+  margin: auto;
+  background-color: black;
+  max-width: 1200px;
+}
+
+.card {
+  background-color: #0d1b38;
+  display: flex;
+  flex-direction: column;
+  width: 31%;
+  height: 500px;
+  margin: 10px 10px;
+  float:left
+}
+
+.card .image {
+  width: 70%;
+  padding: 10px;
+}
+
+.card .card-text {
+  padding-left: 15px;
+}
+
+.card .card-title {
+  color: #876b04;
+}
+
+.card .card-diets {
+  color: #5b582f;
+  font-size: 17px;
+  display: flex;
+  width: 40%;
+  background-color: #000;
+  flex-direction:initial;
+}
+
+.card .button {
+  background-color: #0d1b38;
+  font-size: 22px;
+  color: #ce9c1c;
+  border: 1px solid rgba(2, 2, 2, 0.7);
+  border-radius: 10px;
+  margin: 10px;
 }
