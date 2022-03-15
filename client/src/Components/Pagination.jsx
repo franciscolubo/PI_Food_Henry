@@ -8,13 +8,13 @@ export default function Pagination({ recipesCopy, page }) {
 
 
     return (
-        <div>
-            <nav>
-                <ul>
+        <div className='pagination'>
+            <nav className='pagination-h'>
+                <ul className='pagination-ul'>
                     {
                         pages.map((e, i) => (
-                            <li key={i}>
-                                <button onClick={() => { page(e) }}>{e}</button>
+                            <li className='pagination-li' key={i}>
+                                <button className='pagination-button' onClick={() => { page(e) }}>{e}</button>
                             </li>
                         ))
                     }

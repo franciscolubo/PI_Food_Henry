@@ -16,6 +16,7 @@ export default function Recipes({ recipesCopy, currentPage }) {
                         image={e.image}
                         diets={e.diets}
                         id={e.id}
+                        score={e.score}
                         key={e.id}
                     />
                 })

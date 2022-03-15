@@ -13,9 +13,10 @@ export default function OrderByScore({ ordered, page }) {
     }
 
     return (
-        <div>
-            <select onChange={(e) => handleChange(e)}>
-                <option>Select order</option>
+        <div className='order-score'>
+            <p className='p'>Order by <span className='resaltar'>score</span>: </p>
+            <select className='order-select' onChange={(e) => handleChange(e)}>
+                <option value=''>Select order</option>
                 <option value='score_asc'>Ascendant</option>
                 <option value='score_des'>Descendant</option>
             </select>

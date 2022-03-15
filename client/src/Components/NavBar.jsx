@@ -35,15 +35,15 @@ export default function NavBar({ page }) {
     }
 
     return (
-        <div>
-            <nav>
-                <input type='text' placeholder='Search recipe by name' onChange={(e) => handleChange(e)}></input>
-                <button type='submit' onClick={(e) => handleClick(e)}>Search</button>
+        <div className='navbar-p'>
+            <nav className='navbar'>
+                <input className='navbar-input' type='text' placeholder='Search recipe by name' onChange={(e) => handleChange(e)}></input>
+                <button className='navbar-button' type='submit' onClick={(e) => handleClick(e)}>Search</button>
 
-                <button type='reset' onClick={(e) => handleClickReset(e)}>Restart</button>
+                <button className='navbar-button' type='reset' onClick={(e) => handleClickReset(e)}>Restart</button>
 
                 <Link to={'/recipes'}>
-                    <button>Create recipe</button>
+                    <button className='navbar-button'>Create recipe</button>
                 </Link>
             </nav>
         </div >

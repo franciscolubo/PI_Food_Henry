@@ -40,21 +40,24 @@ export default function Home() {
                     page={page}
                 />
             </div>
-            <div>
-                Order for name: <OrderByName
-                    ordered={ordered}
-                    page={page}
-                />
-                Order for score: <OrderByScore
-                    ordered={ordered}
-                    page={page}
-                />
-                Order by diet: <OrderByDiets
-                    ordered={ordered}
-                />
-                Recipe for Db or Api: <DbOrApi
-                    page={page}
-                />
+            <div className='orders-p'>
+                <div className='orders-h'>
+
+                    <OrderByName
+                        ordered={ordered}
+                        page={page}
+                    />
+                    <OrderByScore
+                        ordered={ordered}
+                        page={page}
+                    />
+                    <OrderByDiets
+                        ordered={ordered}
+                    />
+                    <DbOrApi
+                        page={page}
+                    />
+                </div>
             </div>
             <div>
                 <Recipes

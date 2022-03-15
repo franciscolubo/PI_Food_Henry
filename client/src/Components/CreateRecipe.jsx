@@ -101,45 +101,48 @@ export default function CreateRecipe() {
     }
 
     return (
-        <>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <h2>Create recipe</h2>
-                <label>Title: <input placeholder='Title of recipe' type='text' name='title' onChange={handleChange} value={recipe.title} required></input></label>
-                <label>Score: <input placeholder='Score' min='0' max='100' type='text' name='score' onChange={handleChange} value={recipe.score} required></input></label>
-                <label>Health Score: <input placeholder='Health score' min='0' max='100' type='text' name='healthScore' onChange={handleChange} value={recipe.healthScore} required></input></label>
-                <label>Image: <input placeholder='Image URL' type='url' name='image' onChange={handleChange} value={recipe.image} required></input></label>
-                <label>Summary: <input placeholder='Summary' type='textarea' name='summary' onChange={handleChange} value={recipe.summary} required></input></label>
-                <select onChange={handleSelect}>
-                    <option>Diets types</option>
-                    {
-                        diets?.map(e => {
-                            return <option key={e.id} value={e.name} >{e.name}</option>
-                        })
-                    }
-                </select>
+        <div className='contenedor'>
+            <div className='recipe'>
+                <form onSubmit={(e) => handleSubmit(e)} className='create-recipe'>
+                    <h2 className='recipe-title'>Create recipe</h2>
+                    <div className='contenedor-colectores'>
+                        <label className='nombre-colector'>Title: <input placeholder='Title of recipe' type='text' name='title' onChange={handleChange} value={recipe.title} required></input></label>
+                        <label className='nombre-colector'>Score: <input placeholder='0 - 100' min='0' max='100' type='text' name='score' onChange={handleChange} value={recipe.score} required></input></label>
+                        <label className='nombre-colector'>Health Score: <input placeholder='0 - 100' min='0' max='100' type='text' name='healthScore' onChange={handleChange} value={recipe.healthScore} required></input></label>
+                        <label className='nombre-colector'>Image: <input placeholder='Image URL' type='url' name='image' onChange={handleChange} value={recipe.image} required></input></label>
+                        <label className='nombre-colector'>Summary: <input placeholder='Summary' type='textarea' name='summary' onChange={handleChange} value={recipe.summary} required></input></label>
+                    </div>
+                    <select className='recipe-diets-selector' onChange={handleSelect}>
+                        <option>Diets types</option>
+                        {
+                            diets?.map(e => {
+                                return <option key={e.id} value={e.name} >{e.name}</option>
+                            })
+                        }
+                    </select>
 
-                <button type='submit'>Create Recipe</button>
-            </form>
+                    <button className='create-recipe-button' type='submit'>Create Recipe</button>
+                </form>
 
-            <form onSubmit={addStep}>
-                <p></p>
-                <label>Steps: <input placeholder='Add step' type='text'></input></label>
-                <button type='submit'>Add step</button>
-            </form>
+                <form onSubmit={addStep} className='create-recipe-steps'>
+                    <label>Steps: <input className='recipe-steps-selector' placeholder='Add step' type='text'></input></label>
+                    <button className='steps-button' type='submit'>Add step</button>
+                </form>
 
-            <div>
+            </div>
+            <div className='preview'>
 
-                <h2>Preview</h2>
+                <h2 className='preview-title'>Preview</h2>
                 {
                     (recipe.image === "")
                         ? <p>¡Aqui se mostrara su imagen!</p>
-                        : <img src={recipe.image} alt='img' />
+                        : <img className='preview-image' src={recipe.image} alt='img' />
                 }
-                <span>Title: </span><p>{recipe.title}</p>
-                <span>Score: </span><p>{recipe.score}</p>
-                <span>Health Score: </span><p>{recipe.healthScore}</p>
-                <span>Summary: </span><p>{recipe.summary}</p>
-                <div>
+                <span className='preview-mostrador'>Title: </span><p>{recipe.title}</p>
+                <span className='preview-mostrador'>Score: </span><p>{recipe.score}</p>
+                <span className='preview-mostrador'>Health Score: </span><p>{recipe.healthScore}</p>
+                <span className='preview-mostrador'>Summary: </span><p>{recipe.summary}</p>
+                <div className='preview-diets'>
                     <ul>
                         <li>
                             {
@@ -156,7 +159,7 @@ export default function CreateRecipe() {
                         </li>
                     </ul>
                 </div>
-                <div>
+                <div className='preview-steps'>
                     <ul>
                         <li>
                             {
@@ -180,6 +183,6 @@ export default function CreateRecipe() {
             <Link to={'/home'}>
                 <button type='submit'>Go back</button>
             </Link>
-        </>
+        </div>
     )
 }

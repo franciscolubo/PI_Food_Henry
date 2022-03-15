@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 code {
@@ -13,50 +12,316 @@ code {
     monospace;
 }
 
+.max-width {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Cards - Contenedor padre */
 
 .cards {
   margin: auto;
-  background-color: black;
-  max-width: 1200px;
+  width: 100%;
 }
+
+/* Card - Cartas a mostrar */
 
 .card {
   background-color: #0d1b38;
   display: flex;
   flex-direction: column;
-  width: 31%;
-  height: 500px;
+  width: 30%;
+  height: 600px;
   margin: 10px 10px;
-  float:left
+  float:left;
+  position: relative;
+  border: 4px solid;
+  border-radius: 5px;
 }
 
 .card .image {
-  width: 70%;
+  width: 80%;
+
   padding: 10px;
 }
 
 .card .card-text {
   padding-left: 15px;
+  color: #876b04;
+  border-top: 2px solid;
+  margin: 0px 10px;
 }
 
 .card .card-title {
   color: #876b04;
+  font-size: 20px;
+  width: 100%;
+}
+
+.card .resaltar {
+  font-weight: bold;
 }
 
 .card .card-diets {
   color: #5b582f;
-  font-size: 17px;
-  display: flex;
-  width: 40%;
-  background-color: #000;
-  flex-direction:initial;
+  font-size: 18px;
+  width: 30%;
+  margin: 2px 1px;
+  border: 1px solid rgba(84, 85, 87, 0.4);
+  border-radius: 5px;
+  float: left;
 }
 
 .card .button {
   background-color: #0d1b38;
   font-size: 22px;
+  font-weight: bold;
   color: #ce9c1c;
   border: 1px solid rgba(2, 2, 2, 0.7);
   border-radius: 10px;
   margin: 10px;
+  display: flex;
+  position: absolute;
+  top: 90%;
+}
+
+.card .button:hover {
+  background-color: #211d7b;
+}
+
+.link {
+  text-decoration: none;
+}
+
+/* NavBar */
+
+.navbar-p {
+  background-color: #000;
+  max-width: 100%;
+  height: 40px;
+  position: relative;
+}
+
+.navbar-p .navbar {
+  width: 100%;
+  padding: 5px 7%;
+}
+
+.navbar-p .navbar .navbar-input {
+  width: 60%;
+  font-size: 18px;
+  border: 3px solid;
+  border-radius: 6px 2px;
+}
+
+.navbar-p .navbar .navbar-button {
+  background-color: #0d1b38;
+  color:#ce9c1c;
+  font-size: 18px;
+  border: 2px solid rgb(31, 21, 21);
+  border-radius: 6px;
+  margin-left: 5px;
+}
+
+/* Orders - Ordenamientos */
+.orders-p {
+  background-color: #ccc;
+  width: 100%;
+  height: 80px;
+}
+
+.orders-p .orders-h {
+  padding: 15px;
+  float:left;
+}
+
+.orders-p .orders-h .order-name {
+  float:left;
+}
+
+.orders-p .orders-h .order-score {
+  float:left;
+}
+
+.orders-p .orders-h .order-diets {
+  float:left;
+}
+
+.orders-p .orders-h .order-db-api {
+  float:left;
+}
+
+.orders-p .orders-h .order-select {
+  float:left;
+  font-size: 16px;
+  margin: 15px 3px;
+  color: #000;
+  border: 1px solid #d9d9d9;
+  background: transparent;
+  border: none;
+}
+
+.orders-p .orders-h .p {
+  font-size: 16px;
+  float:left;
+  color: #573e0e;
+}
+
+.orders-p .orders-h .resaltar {
+  font-weight: bold;
+  color: #000;
+}
+
+/* Pagination - Diseño del selector de paginas */
+
+.pagination {
+  width: 100%;
+  height: 50px;
+  clear:both;
+  padding: 5px;
+  border-top: 1px solid #000;
+}
+
+.pagination ul{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+ }
+
+.pagination .pagination-h .pagination-ul .pagination-li {
+  list-style: none;
+  float: left;
+  margin-left: 15px;
+}
+
+.pagination .pagination-ul .pagination-li .pagination-button {
+  float:left;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 5px;
+  width: 40px;
+}
+
+.pagination .pagination-ul .pagination-li .pagination-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* create-recipe - Formulario de creacion */
+
+.contenedor {
+  width: 100%;
+  height: 600px;
+  background-color: #000;
+}
+
+.contenedor .recipe {
+  width: 46%;
+  height: 100%;
+  float:left;
+  margin-right: 20px;
+  background: #fff;
+  border: 3px solid;
+  border-radius: 10px;
+}
+
+.contenedor .recipe .create-recipe {
+  width: 100%;
+  height: 300px;
+}
+
+.contenedor .recipe .create-recipe .contenedor-colectores {
+  margin: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.contenedor .recipe .create-recipe .recipe-title {
+  margin: 10px 100px;
+  font-size: 30px;
+  border-bottom: 3px solid rgba(11, 231, 255, 0.2);
+}
+
+.contenedor .recipe .create-recipe input {
+  font-weight:bold;
+  border: 2px solid;
+  border-radius: 10px;
+}
+
+.contenedor .recipe .create-recipe .contenedor-colectores .nombre-colector {
+  font-size: 19px;
+  padding: 7px;
+}
+
+.contenedor .recipe .create-recipe .recipe-diets-selector {
+  font-weight: bold;
+  float:left;
+  margin-left: 23px;
+  color: #000;
+  border: 1px solid #d9d9d9;
+  background: transparent;
+  width: 160px;
+  height: 20px;
+}
+
+.contenedor .recipe .create-recipe .create-recipe-button {
+  margin-left: 180px;
+  border: 2px solid;
+  border-radius: 10px;
+  width: 100px;
+  color: #e90a0a;
+}
+
+.contenedor .recipe .create-recipe .create-recipe-button:hover {
+  color: #000;
+  background: #d9d9d9;
+}
+
+.contenedor .recipe .create-recipe-steps{
+  margin: 20px
+}
+
+.contenedor .recipe .create-recipe-steps label{
+  font-weight: bold;
+}
+
+.contenedor .recipe .create-recipe-steps .recipe-steps-selector{
+  font-weight:bold;
+  border: 2px solid;
+  border-radius: 10px;
+}
+
+.contenedor .recipe .create-recipe-steps .steps-button {
+  margin-left: 10px;
+  border: 2px solid;
+  border-radius: 5px;
+  width: 100px;
+  font-size: 16px;
+}
+
+.contenedor .recipe .create-recipe-steps .steps-button:hover{
+  color: #fff;
+  background: #000;
+}
+
+.contenedor .preview {
+  background: #fff;
+  width: 46%;
+  height: 100%;
+  float:left;
+  margin-left: 20px;
+  padding-left: 20px;
+  border: 3px solid;
+  border-radius: 10px;
+}
+
+.preview .preview-title {
+  margin: 10px 100px;
+  font-size: 30px;
+  border-bottom: 3px solid rgba(11, 231, 255, 0.2);
+}
+
+.preview .preview-image {
+  width: 60%;
 }
