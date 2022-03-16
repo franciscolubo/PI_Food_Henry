@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { recipeDetail } from '../actions'
+import { Navigate, useParams } from 'react-router-dom'
+import { recipeDetail, deleteRecipe } from '../actions'
 import { Link } from 'react-router-dom'
 
 export default function RecipeDetail() {
@@ -17,6 +17,11 @@ export default function RecipeDetail() {
     const editRecipe = (e) => {
         e.preventDefault()
         alert('Solo puedes editar recetas creadas por ti')
+    }
+    const deleteRec = () => {
+        if (recipe.hasOwnProperty('isDb')) {
+            dispatch(deleteRecipe(idRecipe))
+        } else alert('No puedes eliminar cualquier receta')
     }
     return (
         <div className='contenedor-detail'>
@@ -53,9 +58,13 @@ export default function RecipeDetail() {
             }
             {
                 (recipe.hasOwnProperty('isDb'))
-                    ? <Link to={'/recipes/editRecipe'}><button>Edit recipe</button></Link>
-                    : <button onClick={editRecipe}>Edit recipe</button>
+                    ? <Link to={`/recipes/editRecipe/${idRecipe}`}><button className='button-update'>Edit recipe</button></Link>
+                    : <button className='button-update' onClick={editRecipe}>Edit recipe</button>
             }
+            <Link to='/home'>
+                <button onClick={deleteRec}>Delete recipe</button>
+            </Link>
+
             <Link to='/home'>
                 <button className='button-home'>Back to home</button>
             </Link>

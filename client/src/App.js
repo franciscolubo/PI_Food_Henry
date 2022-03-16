@@ -15,7 +15,7 @@ function App() {
         <Route exact path ='/home' element={<Home />} />
         <Route exact path ='/recipes/:idRecipe' element={<RecipeDetail />} />
         <Route exact path ='/recipes' element={<CreateRecipe />} />
-        <Route exact path ='/recipes/editRecipe' element={<EditRecipe />} />
+        <Route exact path ='/recipes/editRecipe/:id' element={<EditRecipe />} />
       </Switch>
       </div>
     </BrowserRouter>

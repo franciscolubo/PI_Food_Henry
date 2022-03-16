@@ -463,3 +463,135 @@ code {
   font-weight: bold;
 }
 
+/* Update recipe button */
+
+.button-update {
+  margin-left: 20px;
+  width: 100px;
+  font-size: 18px;
+  background: transparent;
+  color: #000;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.button-update:hover{
+  background: #f3e305;
+  color: #fff;
+}
+
+/* Update recipe */
+
+.edit-recipe.contenedor{
+  width: 100%;
+  height: auto;
+}
+
+.contenedor-form {
+  margin: 3px auto;
+  background: #1c2c6b;
+  border: 3px solid;
+  border-radius: 2px 2px 10px 10px;
+}
+
+.contenedor-form .edit-form {
+  width: 100%;
+  height: 400px;
+  margin-top: 10px;
+
+}
+
+.contenedor-form .edit-form label {
+  font-weight: bold;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.contenedor-form .edit-form .div-inputs {
+  display:flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 15px
+}
+
+.contenedor-form .edit-form .input-normal {
+  height: 20px;
+  width: 35%;
+}
+
+.contenedor-form .edit-form .div-diets {
+  clear:both;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.contenedor-form .edit-form .div-diets .select-diets {
+  width: 36%;
+}
+
+.button-form {
+  float:right;
+  margin-right: 50px;
+  border: 2px solid;
+  border-radius: 5px;
+  background: transparent;
+  color: #ebf348;
+  width: 100px;
+  height: 30px;
+}
+
+.button-form:hover {
+  background: #000;
+}
+
+.form-steps{
+  margin-bottom: 20px;
+}
+
+.input-steps {
+  width: 37%;
+  margin-left: 20px;
+}
+
+.button-steps {
+  margin-left: 5px;
+  border: 2px solid;
+  border-radius: 5px;
+  background: transparent;
+  color: #ebf348;
+  width: 100px;
+}
+
+.button-steps:hover {
+  background: #000;
+}
+
+.diets-steps {
+  background: #1c2c6b;
+  border: 1px solid #000;
+  border-radius: 10px;
+  height: auto;
+  margin-bottom: 3px;
+}
+
+.diets-steps h2 {
+  color: #ccc;
+  margin-left: 20px
+}
+
+.diets-steps li {
+  list-style: none;
+  margin-top: 5px;
+  font-size: 18px;
+  color: #d9d9d9
+}
+
+.edit-recipe-contenedor h1 {
+  margin:auto;
+  background: #1c2c6b;
+  padding-bottom: 5px;
+  padding-left: 40px;
+  color: #d9d9d9;
+  border: 3px solid #000;
+  border-radius: 10px 10px 2px 2px;
+}

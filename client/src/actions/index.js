@@ -76,3 +76,17 @@ export function DbOrApiActions(payload) {
     }
 }
 
+export function editDataBase(editRecipe, id){
+    return async function (dispatch) {
+        const newEdit = await axios.put(`http://localhost:3001/recipes/edit/${id}`, editRecipe)
+        return newEdit
+    }
+}
+
+export function deleteRecipe(id){
+    return async function (dispatch) {
+        const deleteRecip = await axios.delete(`http://localhost:3001/recipes/delete/${id}`)
+        return alert('Receta eliminada')
+    }
+}
+

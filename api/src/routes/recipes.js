@@ -60,10 +60,12 @@ router.post('/recipe', async (req, res) => {
     }
 })
 
-router.put('/editRecipe', async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
     try {
-        let { title, score, healthScore, summary, image, diets, steps, id } = req.body
-
+        let { id } = req.params
+        let { title, score, healthScore, summary, image, diets, steps } = req.body
+        console.log(id)
+        console.log(title)
         let recipeUpdate = await Recipe.findOne({
             where: {
                 id: id
@@ -95,7 +97,7 @@ router.put('/editRecipe', async (req, res) => {
 router.delete('/delete/:idRecipe', async (req, res) => {
     try {
         let { idRecipe } = req.params
-
+        console.log(idRecipe)
         await Recipe.destroy({
             where: {
                 id: idRecipe
