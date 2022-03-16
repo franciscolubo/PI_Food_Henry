@@ -1,5 +1,4 @@
 const { Router } = require('express')
-const { Op } = require('sequelize')
 const { getAllInfo } = require('../Controllers/getAll')
 const { getAllId } = require('../Controllers/getId')
 const { Recipe, Diet } = require('../db')
@@ -59,6 +58,54 @@ router.post('/recipe', async (req, res) => {
     } catch (error) {
         res.send(error)
     }
+})
+
+router.put('/editRecipe', async (req, res) => {
+    try {
+        let { title, score, healthScore, summary, image, diets, steps, id } = req.body
+
+        let recipeUpdate = await Recipe.findOne({
+            where: {
+                id: id
+            }
+        })
+
+        let newUpdate = await recipeUpdate.update({
+            title: title,
+            score: score,
+            healthScore: healthScore,
+            image: image,
+            summary: summary,
+            steps: steps,
+        })
+
+        let dietsDb = await Diet.findAll({
+            where: {
+                name: diets
+            }
+        })
+
+        newUpdate.setDiets(dietsDb)
+        res.status(202).json(newUpdate)
+    } catch (error) {
+        res.send(error)
+    }
+})
+
+router.delete('/delete/:idRecipe', async (req, res) => {
+    try {
+        let { idRecipe } = req.params
+
+        await Recipe.destroy({
+            where: {
+                id: idRecipe
+            }
+        })
+
+        res.send('Recipe eliminada')
+    } catch (error) {
+        res.send(error)
+    } 
 })
 
 module.exports = router

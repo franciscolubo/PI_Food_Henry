@@ -50,12 +50,17 @@ export default function CreateRecipe() {
 
     const handleSelect = (e) => {
         e.preventDefault();
-        (e.target.value === 'Diets types')
-            ? e.target.value = ""
-            : setRecipe({
-                ...recipe,
-                diets: [...recipe.diets, e.target.value]
-            })
+        let existRecipe = recipe.diets.filter(d => d === e.target.value)
+        console.log(e.target.value)
+        console.log(existRecipe)
+        if (existRecipe.length === 0) {
+            (e.target.value === 'Diets types')
+                ? e.target.value = ""
+                : setRecipe({
+                    ...recipe,
+                    diets: [...recipe.diets, e.target.value]
+                })
+        } else alert('Ya se agrego esta dieta')
     }
 
     const handleDelete = (element, option) => {
@@ -138,19 +143,20 @@ export default function CreateRecipe() {
                         ? <p>¡Aqui se mostrara su imagen!</p>
                         : <img className='preview-image' src={recipe.image} alt='img' />
                 }
-                <span className='preview-mostrador'>Title: </span><p>{recipe.title}</p>
-                <span className='preview-mostrador'>Score: </span><p>{recipe.score}</p>
-                <span className='preview-mostrador'>Health Score: </span><p>{recipe.healthScore}</p>
-                <span className='preview-mostrador'>Summary: </span><p>{recipe.summary}</p>
+                <p className='preview-p'><span className='preview-mostrador'>Title: </span>{recipe.title}</p>
+                <p className='preview-p'><span className='preview-mostrador'>Score: </span>{recipe.score}</p>
+                <p className='preview-p'><span className='preview-mostrador'>Health Score: </span>{recipe.healthScore}</p>
+                <p className='preview-p-summary'><span className='preview-mostrador'>Summary: </span>{recipe.summary}</p>
                 <div className='preview-diets'>
                     <ul>
                         <li>
+                            <h4>Diets</h4>
                             {
                                 (recipe.diets.length !== 0)
                                     ? recipe.diets.map((e, i) => {
 
-                                        return <p key={i}>
-                                            <button onClick={() => handleDelete({ e }, "diets")}>X</button>
+                                        return <p className='diets-p' key={i}>
+                                            <button className='button-delete' onClick={() => handleDelete({ e }, "diets")}>X</button>
                                             {e}
                                         </p>
                                     })
@@ -162,16 +168,17 @@ export default function CreateRecipe() {
                 <div className='preview-steps'>
                     <ul>
                         <li>
+                            <h4>Steps</h4>
                             {
                                 (recipe.steps.length !== 0)
                                     ? recipe.steps.map((e, i) => {
 
-                                        return <p key={i}>
-                                            <button onClick={() => handleDelete({ e }, "steps")}>X</button>
-                                            {i + 1}. {e}
+                                        return <p className='steps-p' key={i}>
+                                            <button className='button-delete' onClick={() => handleDelete({ e }, "steps")}>X</button>
+                                            <span>{i + 1}.</span> {e}
                                         </p>
                                     })
-                                    : <p>No se agrego ningun paso aun</p>
+                                    : <p>No se agrego ningun paso aún</p>
                             }
                         </li>
                     </ul>
@@ -179,10 +186,11 @@ export default function CreateRecipe() {
             </div>
 
 
-
-            <Link to={'/home'}>
-                <button type='submit'>Go back</button>
-            </Link>
+            <div className='contendor-button'>
+                <Link to={'/home'}>
+                    <button className='button-home' type='submit'>Go back</button>
+                </Link>
+            </div>
         </div>
     )
 }

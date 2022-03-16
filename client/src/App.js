@@ -4,6 +4,7 @@ import LandingPage from './Components/LandingPage.jsx';
 import Home from './Components/Home.jsx'
 import RecipeDetail from './Components/RecipeDetail.jsx'
 import CreateRecipe from './Components/CreateRecipe.jsx'
+import EditRecipe from './Components/EditRecipe.jsx';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path ='/home' element={<Home />} />
         <Route exact path ='/recipes/:idRecipe' element={<RecipeDetail />} />
         <Route exact path ='/recipes' element={<CreateRecipe />} />
+        <Route exact path ='/recipes/editRecipe' element={<EditRecipe />} />
       </Switch>
       </div>
     </BrowserRouter>
