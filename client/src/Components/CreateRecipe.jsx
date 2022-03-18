@@ -106,18 +106,18 @@ export default function CreateRecipe() {
     }
 
     return (
-        <div className='contenedor'>
-            <div className='recipe'>
-                <form onSubmit={(e) => handleSubmit(e)} className='create-recipe'>
-                    <h2 className='recipe-title'>Create recipe</h2>
-                    <div className='contenedor-colectores'>
-                        <label className='nombre-colector'>Title: <input placeholder='Title of recipe' type='text' name='title' onChange={handleChange} value={recipe.title} required></input></label>
-                        <label className='nombre-colector'>Score: <input placeholder='0 - 100' min='0' max='100' type='text' name='score' onChange={handleChange} value={recipe.score} required></input></label>
-                        <label className='nombre-colector'>Health Score: <input placeholder='0 - 100' min='0' max='100' type='text' name='healthScore' onChange={handleChange} value={recipe.healthScore} required></input></label>
-                        <label className='nombre-colector'>Image: <input placeholder='Image URL' type='url' name='image' onChange={handleChange} value={recipe.image} required></input></label>
-                        <label className='nombre-colector'>Summary: <input placeholder='Summary' type='textarea' name='summary' onChange={handleChange} value={recipe.summary} required></input></label>
+        <div>
+            <div>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    <h2 >Create recipe</h2>
+                    <div>
+                        <label>Title: <input placeholder='Title of recipe' type='text' name='title' onChange={handleChange} value={recipe.title} required></input></label>
+                        <label>Score: <input placeholder='0 - 100' min='0' max='100' type='text' name='score' onChange={handleChange} value={recipe.score} required></input></label>
+                        <label>Health Score: <input placeholder='0 - 100' min='0' max='100' type='text' name='healthScore' onChange={handleChange} value={recipe.healthScore} required></input></label>
+                        <label>Image: <input placeholder='Image URL' type='url' name='image' onChange={handleChange} value={recipe.image} required></input></label>
+                        <label>Summary: <input placeholder='Summary' type='textarea' name='summary' onChange={handleChange} value={recipe.summary} required></input></label>
                     </div>
-                    <select className='recipe-diets-selector' onChange={handleSelect}>
+                    <select onChange={handleSelect}>
                         <option>Diets types</option>
                         {
                             diets?.map(e => {
@@ -126,28 +126,28 @@ export default function CreateRecipe() {
                         }
                     </select>
 
-                    <button className='create-recipe-button' type='submit'>Create Recipe</button>
+                    <button type='submit'>Create Recipe</button>
                 </form>
 
-                <form onSubmit={addStep} className='create-recipe-steps'>
-                    <label>Steps: <input className='recipe-steps-selector' placeholder='Add step' type='text'></input></label>
-                    <button className='steps-button' type='submit'>Add step</button>
+                <form onSubmit={addStep}>
+                    <label>Steps: <input placeholder='Add step' type='text'></input></label>
+                    <button type='submit'>Add step</button>
                 </form>
 
             </div>
-            <div className='preview'>
+            <div>
 
-                <h2 className='preview-title'>Preview</h2>
+                <h2>Preview</h2>
                 {
                     (recipe.image === "")
                         ? <p>¡Aqui se mostrara su imagen!</p>
-                        : <img className='preview-image' src={recipe.image} alt='img' />
+                        : <img src={recipe.image} alt='img' />
                 }
-                <p className='preview-p'><span className='preview-mostrador'>Title: </span>{recipe.title}</p>
-                <p className='preview-p'><span className='preview-mostrador'>Score: </span>{recipe.score}</p>
-                <p className='preview-p'><span className='preview-mostrador'>Health Score: </span>{recipe.healthScore}</p>
-                <p className='preview-p-summary'><span className='preview-mostrador'>Summary: </span>{recipe.summary}</p>
-                <div className='preview-diets'>
+                <p><span>Title: </span>{recipe.title}</p>
+                <p><span>Score: </span>{recipe.score}</p>
+                <p><span>Health Score: </span>{recipe.healthScore}</p>
+                <p><span>Summary: </span>{recipe.summary}</p>
+                <div>
                     <ul>
                         <li>
                             <h4>Diets</h4>
@@ -155,8 +155,8 @@ export default function CreateRecipe() {
                                 (recipe.diets.length !== 0)
                                     ? recipe.diets.map((e, i) => {
 
-                                        return <p className='diets-p' key={i}>
-                                            <button className='button-delete' onClick={() => handleDelete({ e }, "diets")}>X</button>
+                                        return <p key={i}>
+                                            <button onClick={() => handleDelete({ e }, "diets")}>X</button>
                                             {e}
                                         </p>
                                     })
@@ -165,7 +165,7 @@ export default function CreateRecipe() {
                         </li>
                     </ul>
                 </div>
-                <div className='preview-steps'>
+                <div>
                     <ul>
                         <li>
                             <h4>Steps</h4>
@@ -173,8 +173,8 @@ export default function CreateRecipe() {
                                 (recipe.steps.length !== 0)
                                     ? recipe.steps.map((e, i) => {
 
-                                        return <p className='steps-p' key={i}>
-                                            <button className='button-delete' onClick={() => handleDelete({ e }, "steps")}>X</button>
+                                        return <p key={i}>
+                                            <button onClick={() => handleDelete({ e }, "steps")}>X</button>
                                             <span>{i + 1}.</span> {e}
                                         </p>
                                     })
@@ -186,9 +186,9 @@ export default function CreateRecipe() {
             </div>
 
 
-            <div className='contendor-button'>
+            <div>
                 <Link to={'/home'}>
-                    <button className='button-home' type='submit'>Go back</button>
+                    <button type='submit'>Go back</button>
                 </Link>
             </div>
         </div>

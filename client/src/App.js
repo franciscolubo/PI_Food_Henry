@@ -9,7 +9,7 @@ import EditRecipe from './Components/EditRecipe.jsx';
 function App() {
   return (
     <BrowserRouter>
-      <div className='max-width'>
+      <div>
       <Switch>
         <Route exact path ='/' element={<LandingPage />} />
         <Route exact path ='/home' element={<Home />} />

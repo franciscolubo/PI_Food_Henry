@@ -109,33 +109,33 @@ export default function EditRecipe() {
     }
 
     return (
-        <div className='edit-recipe-contenedor'>
+        <div>
             <h1>Formulario de edicion receta</h1>
-            <div className='contenedor-form'>
-                <form onSubmit={handleSubmit} className='edit-form'>
-                    <div className='div-inputs'>
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <div>
                         <label>Title<input type='checkbox' id='chec-title' onClick={checkboxs} /></label>
-                        <input className='input-normal' placeholder='Title' name='title' id='title' type='text' onChange={handleChange} readOnly />
+                        <input placeholder='Title' name='title' id='title' type='text' onChange={handleChange} readOnly />
                     </div>
-                    <div className='div-inputs'>
+                    <div>
                         <label>Score<input type='checkbox' id='chec-score' onClick={checkboxs} /></label>
-                        <input className='input-normal' placeholder='Score' name='score' id='score' type='text' onChange={handleChange} readOnly />
+                        <input placeholder='Score' name='score' id='score' type='text' onChange={handleChange} readOnly />
                     </div>
-                    <div className='div-inputs'>
+                    <div>
                         <label>Health score<input type='checkbox' id='chec-healthScore' onClick={checkboxs} /></label>
-                        <input className='input-normal' placeholder='Health score' name='healthScore' id='healthScore' type='text' onChange={handleChange} readOnly />
+                        <input placeholder='Health score' name='healthScore' id='healthScore' type='text' onChange={handleChange} readOnly />
                     </div>
-                    <div className='div-inputs'>
+                    <div>
                         <label>Image<input type='checkbox' id='chec-image' onClick={checkboxs} /></label>
-                        <input className='input-normal' placeholder='Image' name='image' id='image' type='url' onChange={handleChange} readOnly />
+                        <input placeholder='Image' name='image' id='image' type='url' onChange={handleChange} readOnly />
                     </div>
-                    <div className='div-inputs'>
+                    <div>
                         <label>Summary<input type='checkbox' id='chec-summary' onClick={checkboxs} /></label>
-                        <input className='input-normal' placeholder='Summary' name='summary' id='summary' type='text-area' onChange={handleChange} readOnly />
+                        <input placeholder='Summary' name='summary' id='summary' type='text-area' onChange={handleChange} readOnly />
                     </div>
 
-                    <div className='div-diets'>
-                        <select onChange={addDiets} className='select-diets'>
+                    <div>
+                        <select onChange={addDiets}>
                             <option value=''>Select diet</option>
                             {
                                 dietsDb.map(e => {
@@ -145,15 +145,15 @@ export default function EditRecipe() {
                         </select>
                     </div>
 
-                    <button type='submit' className='button-form'>ENVIAR</button>
+                    <button type='submit'>ENVIAR</button>
                 </form>
 
-                <form onSubmit={addSteps} className='form-steps'>
-                    <input className='input-steps' placeholder='Steps' type='text'></input>
-                    <button className='button-steps' type='submit'>Add steps</button>
+                <form onSubmit={addSteps}>
+                    <input placeholder='Steps' type='text'></input>
+                    <button type='submit'>Add steps</button>
                 </form>
             </div>
-            <div className='diets-steps'>
+            <div>
                 {
                     (editRecipe.diets.length === 0)
                         ? <h2>Aqui iran sus dietas seleccionadas</h2>
@@ -163,14 +163,14 @@ export default function EditRecipe() {
                     {
                         editRecipe.diets?.map((e, i) => {
                             return <li key={i}>
-                                <button className='button-delete' onClick={() => handleDelete({ e }, 'diet')}>X</button>
+                                <button onClick={() => handleDelete({ e }, 'diet')}>X</button>
                                 {e}</li>
                         })
                     }
                 </ul>
             </div>
 
-            <div className='diets-steps'>
+            <div>
                 {
                     (editRecipe.steps.length === 0)
                         ? <h2>Aqui iran sus pasos creados</h2>
@@ -180,13 +180,13 @@ export default function EditRecipe() {
                     {
                         editRecipe.steps?.map((e, i) => {
                             return <li key={i}>
-                                <button className='button-delete' onClick={() => handleDelete({ e }, 'steps')}>X</button>
+                                <button onClick={() => handleDelete({ e }, 'steps')}>X</button>
                                 {e}</li>
                         })
                     }
                 </ul>
             </div>
-            <Link to='/home'><button className='button-home'>Go home</button></Link>
+            <Link to='/home'><button>Go home</button></Link>
         </div>
     )
 }

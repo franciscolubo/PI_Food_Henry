@@ -13,9 +13,9 @@ export default function OrderByName({ ordered, page }) {
     }
 
     return (
-        <div className='order-name'>
-            <p className='p'>Order by <span className='resaltar'>name</span>: </p>
-            <select className='order-select' onChange={(e) => handleOrderName(e)}>
+        <div>
+            <p>Order by <span>name</span>: </p>
+            <select onChange={(e) => handleOrderName(e)}>
                 <option >Select order</option>
                 <option value='asc'>Ascendent</option>
                 <option value='des'>Descendent</option>

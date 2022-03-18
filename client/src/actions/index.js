@@ -90,3 +90,8 @@ export function deleteRecipe(id){
     }
 }
 
+export function deleteDetail() {
+    return {
+        type: '@delete_detail'
+    }
+}

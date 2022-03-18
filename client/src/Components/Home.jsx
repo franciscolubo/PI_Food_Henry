@@ -40,8 +40,8 @@ export default function Home() {
                     page={page}
                 />
             </div>
-            <div className='orders-p'>
-                <div className='orders-h'>
+            <div>
+                <div>
 
                     <OrderByName
                         ordered={ordered}

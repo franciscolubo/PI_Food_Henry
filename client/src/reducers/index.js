@@ -107,6 +107,12 @@ const rootReducer = (state = initialState, action) => {
                     ...state,
                     recipesCopy: array
                 }
+            
+            case '@delete_detail':
+                return {
+                    ...state,
+                    detail: []
+                }
 
         default: return {
             ...state

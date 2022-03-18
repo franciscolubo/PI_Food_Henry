@@ -13,9 +13,9 @@ export default function OrderByDiets({ ordered }) {
     }
 
     return (
-        <div className='order-diets'>
-            <p className='p'>Order by <span className='resaltar'>diet</span>: </p>
-            <select className='order-select' onChange={(e) => handleClick(e)}>
+        <div>
+            <p>Order by <span>diet</span>: </p>
+            <select onChange={(e) => handleClick(e)}>
                 <option value='all'>All diets</option>
                 {
                     diets.map((e) => {

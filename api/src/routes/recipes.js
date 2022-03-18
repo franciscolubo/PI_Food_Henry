@@ -11,9 +11,16 @@ router.get('/', async (req, res) => {
         const recipes = await getAllInfo()
         if (name) {
             const existName = recipes.filter(e => e.title.toLowerCase().includes(name.toLowerCase())) // e.title=Facturas === name: facturas
-            existName.length
-                ? res.status(200).json(existName) 
-                : res.status(404).send('No se encontro una receta con ese nombre')
+            if (existName.length !== 0) {
+                res.status(200).json(existName)
+            } else {
+                res.status(404).send('No se encontro una receta con ese nombre')
+            }
+            
+
+            // existName.length
+            //     ? res.status(200).json(existName) 
+            //     : res.status(404).send('No se encontro una receta con ese nombre')
         } else {
             res.status(200).send(recipes)
         }
@@ -47,6 +54,7 @@ router.post('/recipe', async (req, res) => {
             steps,
             image,
         })
+        
         let newDiets = await Diet.findAll({
             where: {
                 name: diets
@@ -64,8 +72,6 @@ router.put('/edit/:id', async (req, res) => {
     try {
         let { id } = req.params
         let { title, score, healthScore, summary, image, diets, steps } = req.body
-        console.log(id)
-        console.log(title)
         let recipeUpdate = await Recipe.findOne({
             where: {
                 id: id

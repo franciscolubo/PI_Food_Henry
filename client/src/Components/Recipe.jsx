@@ -7,22 +7,22 @@ export default function Recipe({ title, image, diets, score, id }) {
 
     return (
 
-        <div className='card'>
+        <div>
             {
                 (image.length === 0)
-                    ? <img className='image' alt='img' src='https://www.verte.tv/thumb/28831/800-null-92/interrogacion.jpeg' />
-                    : <img className='image' alt='img' src={image} />
+                    ? <img alt='img' src='https://www.verte.tv/thumb/28831/800-null-92/interrogacion.jpeg' />
+                    : <img alt='img' src={image} />
             }
 
-            <div className='card-text'>
-                <h2 className='card-title'>{title}</h2>
-                <p><span className='resaltar'>Score</span>: {score}</p>
-                <p className='resaltar'>Diets:</p>
+            <div>
+                <h2>{title}</h2>
+                <p><span>Score</span>: {score}</p>
+                <p>Diets:</p>
                 {
-                    diets.map((e, i) => { return <p className='card-diets' key={i + 1}>{e}</p> })
+                    diets.map((e, i) => { return <p key={i + 1}>{e}</p> })
                 }
             </div>
-            <Link to={`/recipes/${id}`} className='link'><button className='button'>More details</button></Link>
+            <Link to={`/recipes/${id}`}><button>More details</button></Link>
         </div>
 
     )
