@@ -8,6 +8,8 @@ import OrderByName from "./OrderByName.jsx";
 import OrderByDiets from "./OrderByDiets.jsx";
 import OrderByScore from "./OrderByScore.jsx";
 import DbOrApi from "./DbOrApi.jsx";
+import { Container_General } from "../Style/OrdersBy-styled.js";
+import { HomeContainer } from "../Style/Home-styled.js";
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -34,43 +36,35 @@ export default function Home() {
 
 
     return (
-        <div>
-            <div>
-                <NavBar
+        <HomeContainer>
+            <NavBar
+                page={page}
+            />
+            <Container_General>
+                <OrderByName
+                    ordered={ordered}
                     page={page}
                 />
-            </div>
-            <div>
-                <div>
+                <OrderByScore
+                    ordered={ordered}
+                    page={page}
+                />
+                <OrderByDiets
+                    ordered={ordered}
+                />
+                <DbOrApi
+                    page={page}
+                />
+            </Container_General>
 
-                    <OrderByName
-                        ordered={ordered}
-                        page={page}
-                    />
-                    <OrderByScore
-                        ordered={ordered}
-                        page={page}
-                    />
-                    <OrderByDiets
-                        ordered={ordered}
-                    />
-                    <DbOrApi
-                        page={page}
-                    />
-                </div>
-            </div>
-            <div>
-                <Recipes
-                    recipesCopy={recipesCopy} // array
-                    currentPage={currentPage} // 2
-                />
-            </div>
-            <div>
-                <Pagination
-                    recipesCopy={recipesCopy.length}
-                    page={page}
-                />
-            </div>
-        </div>
+            <Recipes
+                recipesCopy={recipesCopy} // array
+                currentPage={currentPage} // 2
+            />
+            <Pagination
+                recipesCopy={recipesCopy.length}
+                page={page}
+            />
+        </HomeContainer>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { orderByScore } from '../actions'
+import { Container } from '../Style/OrdersBy-styled'
 
 export default function OrderByScore({ ordered, page }) {
     const dispatch = useDispatch()
@@ -13,13 +14,13 @@ export default function OrderByScore({ ordered, page }) {
     }
 
     return (
-        <div>
+        <Container>
             <p>Order by <span>score</span>: </p>
             <select onChange={(e) => handleChange(e)}>
                 <option value=''>Select order</option>
                 <option value='score_asc'>Ascendant</option>
                 <option value='score_des'>Descendant</option>
             </select>
-        </div>
+        </Container>
     )
 }

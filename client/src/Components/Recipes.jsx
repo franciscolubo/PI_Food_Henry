@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container_Recipes } from '../Style/Recipes-styled'
 import Recipe from './Recipe'
 
 
@@ -7,8 +8,9 @@ export default function Recipes({ recipesCopy, currentPage }) {
     const firstRecipe = lastRecipe - 9 // 36 - 9 = 27
     const pagesRecipes = recipesCopy.slice(firstRecipe, lastRecipe) // 27, 36
 
+
     return (
-        <div>
+        <Container_Recipes>
             {
                 pagesRecipes.map(e => {
                     return <Recipe
@@ -21,6 +23,6 @@ export default function Recipes({ recipesCopy, currentPage }) {
                     />
                 })
             }
-        </div>
+        </Container_Recipes>
     )
 }

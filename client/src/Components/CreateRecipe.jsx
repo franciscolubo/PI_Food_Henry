@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import { addRecipeDb } from '../actions'
+import { Button_Home, Container_Create, Form_Create, Preview } from '../Style/CreateRecipe-styled'
 
 
 
@@ -107,90 +108,90 @@ export default function CreateRecipe() {
 
     return (
         <div>
-            <div>
-                <form onSubmit={(e) => handleSubmit(e)}>
+            <Container_Create>
+                <Form_Create onSubmit={(e) => handleSubmit(e)}>
                     <h2 >Create recipe</h2>
                     <div>
-                        <label>Title: <input placeholder='Title of recipe' type='text' name='title' onChange={handleChange} value={recipe.title} required></input></label>
+                        <label>Title: <input placeholder='Title of recipe' type='text' name='title' onChange={handleChange} value={recipe.title} required></input>
+                        </label>
                         <label>Score: <input placeholder='0 - 100' min='0' max='100' type='text' name='score' onChange={handleChange} value={recipe.score} required></input></label>
                         <label>Health Score: <input placeholder='0 - 100' min='0' max='100' type='text' name='healthScore' onChange={handleChange} value={recipe.healthScore} required></input></label>
                         <label>Image: <input placeholder='Image URL' type='url' name='image' onChange={handleChange} value={recipe.image} required></input></label>
                         <label>Summary: <input placeholder='Summary' type='textarea' name='summary' onChange={handleChange} value={recipe.summary} required></input></label>
+                        <label>Diets:
+                            <select onChange={handleSelect}>
+                                <option>Diets types</option>
+                                {
+                                    diets?.map(e => {
+                                        return <option key={e.id} value={e.name} >{e.name}</option>
+                                    })
+                                }
+                            </select>
+                        </label>
+                        <button type='submit'>Create Recipe</button>
                     </div>
-                    <select onChange={handleSelect}>
-                        <option>Diets types</option>
+
+                </Form_Create>
+
+                <Form_Create onSubmit={addStep}>
+                    <div>
+                        <label>Steps: <input placeholder='Add step' type='text'></input></label>
+                        <button type='submit'>Add step</button>
+                    </div>
+                </Form_Create>
+
+            </Container_Create>
+            <Container_Create>
+                <Preview>
+                    <h2>Preview</h2>
+                    <div>
                         {
-                            diets?.map(e => {
-                                return <option key={e.id} value={e.name} >{e.name}</option>
-                            })
+                            (recipe.image === "")
+                                ? <p>¡Aqui se mostrara su imagen!</p>
+                                : <img src={recipe.image} alt='img' />
                         }
-                    </select>
+                        <h4>Title: </h4><p>{recipe.title}</p>
+                        <h4>Score: </h4><p>{recipe.score}</p>
+                        <h4>Health Score: </h4><p>{recipe.healthScore}</p>
+                        <h4>Summary: </h4><p>{recipe.summary}</p>
+                    </div>
+                    <div>
+                        <h4>Diets</h4>
+                        {
+                            (recipe.diets.length !== 0)
+                                ? recipe.diets.map((e, i) => {
 
-                    <button type='submit'>Create Recipe</button>
-                </form>
+                                    return <p key={i}>
+                                        <button onClick={() => handleDelete({ e }, "diets")}>X</button>
+                                        {e}
+                                    </p>
+                                })
+                                : <p>Aun no se agrego ningun tipo de dieta</p>
+                        }
+                    </div>
+                    <div>
+                        <h4>Steps</h4>
+                        {
+                            (recipe.steps.length !== 0)
+                                ? recipe.steps.map((e, i) => {
 
-                <form onSubmit={addStep}>
-                    <label>Steps: <input placeholder='Add step' type='text'></input></label>
-                    <button type='submit'>Add step</button>
-                </form>
-
-            </div>
-            <div>
-
-                <h2>Preview</h2>
-                {
-                    (recipe.image === "")
-                        ? <p>¡Aqui se mostrara su imagen!</p>
-                        : <img src={recipe.image} alt='img' />
-                }
-                <p><span>Title: </span>{recipe.title}</p>
-                <p><span>Score: </span>{recipe.score}</p>
-                <p><span>Health Score: </span>{recipe.healthScore}</p>
-                <p><span>Summary: </span>{recipe.summary}</p>
-                <div>
-                    <ul>
-                        <li>
-                            <h4>Diets</h4>
-                            {
-                                (recipe.diets.length !== 0)
-                                    ? recipe.diets.map((e, i) => {
-
-                                        return <p key={i}>
-                                            <button onClick={() => handleDelete({ e }, "diets")}>X</button>
-                                            {e}
-                                        </p>
-                                    })
-                                    : <p>Aun no se agrego ningun tipo de dieta</p>
-                            }
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <ul>
-                        <li>
-                            <h4>Steps</h4>
-                            {
-                                (recipe.steps.length !== 0)
-                                    ? recipe.steps.map((e, i) => {
-
-                                        return <p key={i}>
-                                            <button onClick={() => handleDelete({ e }, "steps")}>X</button>
-                                            <span>{i + 1}.</span> {e}
-                                        </p>
-                                    })
-                                    : <p>No se agrego ningun paso aún</p>
-                            }
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                                    return <p key={i}>
+                                        <button onClick={() => handleDelete({ e }, "steps")}>X</button>
+                                        <span>{i + 1}.</span> {e}
+                                    </p>
+                                })
+                                : <p>No se agrego ningun paso aún</p>
+                        }
+                    </div>
+                </Preview>
+            </Container_Create>
 
 
-            <div>
+            <Button_Home>
                 <Link to={'/home'}>
                     <button type='submit'>Go back</button>
                 </Link>
-            </div>
-        </div>
+            </Button_Home>
+        </div >
     )
 }

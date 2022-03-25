@@ -1,4 +1,5 @@
 import React from 'react'
+import { Containter_Pagination, Pagination_List } from '../Style/Pagination-styled'
 
 export default function Pagination({ recipesCopy, page }) {
     let pages = []
@@ -10,15 +11,15 @@ export default function Pagination({ recipesCopy, page }) {
     return (
         <div>
             <nav>
-                <ul>
+                <Containter_Pagination>
                     {
                         pages.map((e, i) => (
-                            <li key={i}>
+                            <Pagination_List key={i}>
                                 <button onClick={() => { page(e) }}>{e}</button>
-                            </li>
+                            </Pagination_List>
                         ))
                     }
-                </ul>
+                </Containter_Pagination>
             </nav>
         </div>
     )

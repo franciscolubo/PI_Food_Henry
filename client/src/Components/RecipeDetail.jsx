@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Navigate, useParams } from 'react-router-dom'
 import { recipeDetail, deleteRecipe, deleteDetail } from '../actions'
 import { Link } from 'react-router-dom'
+import { Container_Details } from '../Style/RecipeDetail-styled'
 
 export default function RecipeDetail() {
     const dispatch = useDispatch()
@@ -27,18 +28,18 @@ export default function RecipeDetail() {
     }
 
     return (
-        <div>
+        <Container_Details>
             {
                 (recipe.length === 0)
-                    ? <p>Estamos cargando todo</p>
+                    ? <h3>Estamos cargando todo</h3>
                     :
                     <div>
                         <img alt='img' src={recipe.image} />
                         <div>
                             <h2>{recipe.title}</h2>
-                            <p><span>Score: </span>{recipe.score}</p>
-                            <p><span>Health score: </span>{recipe.healthScore}</p>
-                            <p><span>Description: </span>{recipe.summary}</p>
+                            <h4>Score</h4><p>{recipe.score}</p>
+                            <h4>Health Score</h4><p>{recipe.healthScore}</p>
+                            <h4>Description</h4><p>{recipe.summary}</p>
                             <div>
                                 <h4>Diets</h4>
                                 {
@@ -48,6 +49,7 @@ export default function RecipeDetail() {
                                 }
                             </div>
                             <div>
+                                <h4>Steps</h4>
                                 {
                                     (recipe.steps?.length === 0)
                                         ? <p>No hay pasos para esta receta</p>
@@ -71,6 +73,6 @@ export default function RecipeDetail() {
             <Link to='/home'>
                 <button>Back to home</button>
             </Link>
-        </div>
+        </Container_Details>
     )
 }

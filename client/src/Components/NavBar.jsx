@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getRecipeName, getRecipes } from '../actions'
 import { Link } from 'react-router-dom'
+import { Buttons, Buttons_Div, Container, Container_SearchBar } from '../Style/NavBar-styled'
 
 export default function NavBar({ page }) {
     const dispatch = useDispatch()
@@ -35,17 +36,21 @@ export default function NavBar({ page }) {
     }
 
     return (
-        <div>
-            <nav>
+        <Container>
+            <Container_SearchBar>
                 <input type='text' placeholder='Search recipe by name' onChange={(e) => handleChange(e)}></input>
-                <button type='submit' onClick={(e) => handleClick(e)}>Search</button>
+                <button type='submit' onClick={(e) => handleClick(e)}>
+                    <img src='/search.svg' alt='search' />
+                </button>
+            </Container_SearchBar>
+            <Buttons_Div>
 
-                <button type='reset' onClick={(e) => handleClickReset(e)}>Restart</button>
+                <Buttons type='reset' onClick={(e) => handleClickReset(e)}><img src='/reset.svg' alt='reset' /></Buttons>
 
                 <Link to={'/recipes'}>
-                    <button>Create recipe</button>
+                    <Buttons><img src='/createfood.svg' alt='createrecipe' /></Buttons>
                 </Link>
-            </nav>
-        </div >
+            </Buttons_Div>
+        </Container>
     )
 }
