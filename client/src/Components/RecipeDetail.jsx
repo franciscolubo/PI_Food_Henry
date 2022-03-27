@@ -1,10 +1,10 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { Navigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { recipeDetail, deleteRecipe, deleteDetail } from '../actions'
 import { Link } from 'react-router-dom'
-import { Container_Details } from '../Style/RecipeDetail-styled'
+import { CONTAINER_DETAILS } from '../Style/RecipeDetail-styled'
 
 export default function RecipeDetail() {
     const dispatch = useDispatch()
@@ -28,7 +28,7 @@ export default function RecipeDetail() {
     }
 
     return (
-        <Container_Details>
+        <CONTAINER_DETAILS>
             {
                 (recipe.length === 0)
                     ? <h3>Estamos cargando todo</h3>
@@ -73,6 +73,6 @@ export default function RecipeDetail() {
             <Link to='/home'>
                 <button>Back to home</button>
             </Link>
-        </Container_Details>
+        </CONTAINER_DETAILS>
     )
 }

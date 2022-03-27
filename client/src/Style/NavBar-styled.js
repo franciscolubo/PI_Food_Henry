@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const first_color = "#dc8900";
 const first_color_alt = "#FACD84";
 
-export const Container = styled.div`
+export const CONTAINER = styled.div`
     display: flex;
     flex-direction: row;
     background: ${first_color};
@@ -15,7 +15,7 @@ export const Container = styled.div`
     }
 `;
 
-export const Container_SearchBar = styled.div`
+export const CONTAINER_SEARCHBAR = styled.div`
     flex: .7;
     input{
         height: 30px;
@@ -66,13 +66,13 @@ export const Container_SearchBar = styled.div`
     }
 `;
 
-export const Buttons_Div = styled.div`
+export const BUTTONS_DIV = styled.div`
     flex: .3;
     display: flex;
     flex-direction: row;
 `;
 
-export const Buttons = styled.button`
+export const BUTTONS = styled.button`
     width: 30px;
     height: 30px;
 

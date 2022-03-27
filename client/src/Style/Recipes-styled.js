@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const first_color_alt = "#816a14";
 
-export const Container_Recipes = styled.div`
+export const CONTAINER_RECIPES = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 320px;
@@ -21,7 +21,7 @@ export const Container_Recipes = styled.div`
     }
 `;
 
-export const ShowRecipe = styled.div`
+export const SHOW_RECIPE = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;

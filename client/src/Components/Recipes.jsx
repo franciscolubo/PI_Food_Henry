@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container_Recipes } from '../Style/Recipes-styled'
+import { CONTAINER_RECIPES } from '../Style/Recipes-styled'
 import Recipe from './Recipe'
 
 
@@ -10,7 +10,7 @@ export default function Recipes({ recipesCopy, currentPage }) {
 
 
     return (
-        <Container_Recipes>
+        <CONTAINER_RECIPES>
             {
                 pagesRecipes.map(e => {
                     return <Recipe
@@ -23,6 +23,6 @@ export default function Recipes({ recipesCopy, currentPage }) {
                     />
                 })
             }
-        </Container_Recipes>
+        </CONTAINER_RECIPES>
     )
 }

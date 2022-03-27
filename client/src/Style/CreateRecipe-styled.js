@@ -3,7 +3,18 @@ import styled from "styled-components";
 const first_color = "#dc8900";
 const first_color_alt = "#FACD84";
 
-export const Container_Create = styled.div`
+export const CONTAINER_CREAT_AND_PREV = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 900px){
+        flex-direction: row;
+        height: auto;
+    }
+
+`;
+
+export const CONTAINER_CREATE = styled.div`
     background: #3e3b42;
     display: flex;
     flex-direction: column;
@@ -13,17 +24,30 @@ export const Container_Create = styled.div`
     border-radius: 10px;
 
     @media screen and (min-width: 900px){
-        flex-direction: row;
+        flex: .50;
+    }
+
+`;
+
+export const CONTAINER_PREVIEW = styled.div`
+    background: #3e3b42;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+    padding-bottom: 15px;
+
+    @media screen and (min-width: 900px){
+        flex: .50;
     }
 `;
 
-export const Form_Create = styled.form`
+export const FORM_CREATE = styled.form`
     h2{
         font-weight: 600;
         letter-spacing: 1px;
         border-bottom: 1px solid;
-        width: 60%;
         margin: 20px auto;
+        text-align: center;
     }
     
     button{
@@ -96,18 +120,19 @@ export const Form_Create = styled.form`
     @media screen and (min-width: 600px){
         h2{
             text-align: center;
-            width: 40%;
         }
     }
 
     @media screen and (min-width: 900px){
-        flex: 25%;
+        div{
+            margin-bottom: 100px;
+        }
     }
 
 `;
 
 
-export const Preview = styled.div`
+export const PREVIEW = styled.div`
     text-align: center;
     margin: auto;
     clear: both;
@@ -116,8 +141,8 @@ export const Preview = styled.div`
         font-weight: 600;
         letter-spacing: 1px;
         border-bottom: 1px solid;
-        margin: 15px auto;
-        width: 60%;
+        margin: 20px auto;
+        width: 100%;
     }
 
     img{
@@ -156,15 +181,11 @@ export const Preview = styled.div`
             width: 100%;
         }
     }
-
-    @media screen and (min-width: 900px){
-        flex: 50%;
-    }
 `;
 
 
 
-export const Button_Home = styled.div`
+export const BUTTON_HOME = styled.div`
     width: 90%;
     margin: auto;
     text-align: center;

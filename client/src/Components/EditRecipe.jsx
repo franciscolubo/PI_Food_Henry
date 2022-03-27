@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { editDataBase } from '../actions'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { BUTTON, CONTAINER, EDIT_CONTAINER } from '../Style/EditRecipe-styled'
 
 export default function EditRecipe() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const dietsDb = useSelector(state => state.diets)
     const oldRecipe = useSelector(state => state.detail)
     const { id } = useParams()
@@ -54,21 +56,18 @@ export default function EditRecipe() {
         return true
     }
 
-    const checkboxs = (e) => {
-        let id = e.target.id.substring(5)
-        let comprobacion = document.getElementById(id).readOnly
-        if (comprobacion) {
-            document.getElementById(id).readOnly = false;
-        } else {
-            document.getElementById(id).readOnly = true;
-        }
-    }
-
     const handleDelete = (e, option) => {
         if (option === 'diet') {
             setEditRecipe({
                 ...editRecipe,
                 diets: editRecipe.diets.filter(diet => diet !== e.e)
+            })
+        }
+
+        if (option === 'steps') {
+            setEditRecipe({
+                ...editRecipe,
+                steps: editRecipe.steps.filter(steps => steps !== e.e)
             })
         }
     }
@@ -106,87 +105,96 @@ export default function EditRecipe() {
             console.log('hola')
             dispatch(editDataBase(editRecipe, id))
         }
+        navigate('/home')
     }
 
     return (
         <div>
-            <h1>Formulario de edicion receta</h1>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>Title<input type='checkbox' id='chec-title' onClick={checkboxs} /></label>
-                        <input placeholder='Title' name='title' id='title' type='text' onChange={handleChange} readOnly />
-                    </div>
-                    <div>
-                        <label>Score<input type='checkbox' id='chec-score' onClick={checkboxs} /></label>
-                        <input placeholder='Score' name='score' id='score' type='text' onChange={handleChange} readOnly />
-                    </div>
-                    <div>
-                        <label>Health score<input type='checkbox' id='chec-healthScore' onClick={checkboxs} /></label>
-                        <input placeholder='Health score' name='healthScore' id='healthScore' type='text' onChange={handleChange} readOnly />
-                    </div>
-                    <div>
-                        <label>Image<input type='checkbox' id='chec-image' onClick={checkboxs} /></label>
-                        <input placeholder='Image' name='image' id='image' type='url' onChange={handleChange} readOnly />
-                    </div>
-                    <div>
-                        <label>Summary<input type='checkbox' id='chec-summary' onClick={checkboxs} /></label>
-                        <input placeholder='Summary' name='summary' id='summary' type='text-area' onChange={handleChange} readOnly />
-                    </div>
+            <CONTAINER>
+                <h1>Formulario de edicion receta</h1>
+                <EDIT_CONTAINER>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <label>Title</label>
+                            <input placeholder='Title' name='title' type='text' onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label>Score</label>
+                            <input name='score' type='range' onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label>Health score</label>
+                            <input name='healthScore' id='healthScore' type='range' onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label>Image</label>
+                            <input placeholder='Image' name='image' type='url' onChange={handleChange} />
+                        </div>
+                        <div>
+                            <label>Summary</label>
+                            <input placeholder='Summary' name='summary' id='summary' type='text-area' onChange={handleChange} />
+                        </div>
 
-                    <div>
-                        <select onChange={addDiets}>
-                            <option value=''>Select diet</option>
-                            {
-                                dietsDb.map(e => {
-                                    return <option key={e.id} name='diets' value={e.name}>{e.name}</option>
-                                })
-                            }
-                        </select>
-                    </div>
+                        <div>
+                            <label>Diets</label>
+                            <select onChange={addDiets}>
+                                <option value=''>Select diet</option>
+                                {
+                                    dietsDb.map(e => {
+                                        return <option key={e.id} name='diets' value={e.name}>{e.name}</option>
+                                    })
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <div>
+                                <button type='submit'>ENVIAR</button>
+                            </div>
+                        </div>
+                    </form>
 
-                    <button type='submit'>ENVIAR</button>
-                </form>
-
-                <form onSubmit={addSteps}>
-                    <input placeholder='Steps' type='text'></input>
-                    <button type='submit'>Add steps</button>
-                </form>
-            </div>
-            <div>
-                {
-                    (editRecipe.diets.length === 0)
-                        ? <h2>Aqui iran sus dietas seleccionadas</h2>
-                        : <h2>Estas son sus dietas seleccionadas</h2>
-                }
-                <ul>
+                    <form onSubmit={addSteps}>
+                        <input placeholder='Steps' type='text'></input>
+                        <button type='submit'>Add steps</button>
+                    </form>
+                </EDIT_CONTAINER>
+                <div>
                     {
-                        editRecipe.diets?.map((e, i) => {
-                            return <li key={i}>
-                                <button onClick={() => handleDelete({ e }, 'diet')}>X</button>
-                                {e}</li>
-                        })
+                        (editRecipe.diets.length === 0)
+                            ? <h2>Aqui iran sus dietas seleccionadas</h2>
+                            : <h2>Estas son sus dietas seleccionadas</h2>
                     }
-                </ul>
-            </div>
+                    <ul>
+                        {
+                            editRecipe.diets?.map((e, i) => {
+                                return <li key={i}>
+                                    <button onClick={() => handleDelete({ e }, 'diet')}>X</button>
+                                    {e}</li>
+                            })
+                        }
+                    </ul>
+                </div>
 
-            <div>
-                {
-                    (editRecipe.steps.length === 0)
-                        ? <h2>Aqui iran sus pasos creados</h2>
-                        : <h2>Estos son sus pasos creados</h2>
-                }
-                <ul>
+                <div>
                     {
-                        editRecipe.steps?.map((e, i) => {
-                            return <li key={i}>
-                                <button onClick={() => handleDelete({ e }, 'steps')}>X</button>
-                                {e}</li>
-                        })
+                        (editRecipe.steps.length === 0)
+                            ? <h2>Aqui iran sus pasos creados</h2>
+                            : <h2>Estos son sus pasos creados</h2>
                     }
-                </ul>
-            </div>
-            <Link to='/home'><button>Go home</button></Link>
+                    <ul>
+                        {
+                            editRecipe.steps?.map((e, i) => {
+                                return <li key={i}>
+                                    <button onClick={() => handleDelete({ e }, 'steps')}>X</button>
+                                    {e}</li>
+                            })
+                        }
+                    </ul>
+                </div>
+            </CONTAINER>
+            <BUTTON>
+                <Link to='/home'><button>Go home</button></Link>
+            </BUTTON>
         </div>
     )
 }

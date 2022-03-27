@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Container_Details = styled.div`
+export const CONTAINER_DETAILS = styled.div`
     background: #3e3b42;
     display: flex;
     flex-direction: column;

@@ -8,8 +8,8 @@ import OrderByName from "./OrderByName.jsx";
 import OrderByDiets from "./OrderByDiets.jsx";
 import OrderByScore from "./OrderByScore.jsx";
 import DbOrApi from "./DbOrApi.jsx";
-import { Container_General } from "../Style/OrdersBy-styled.js";
-import { HomeContainer } from "../Style/Home-styled.js";
+import { CONTAINER_GENERAL } from "../Style/OrdersBy-styled.js";
+import { HOME_CONTAINER } from "../Style/Home-styled.js";
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -36,11 +36,11 @@ export default function Home() {
 
 
     return (
-        <HomeContainer>
+        <HOME_CONTAINER>
             <NavBar
                 page={page}
             />
-            <Container_General>
+            <CONTAINER_GENERAL>
                 <OrderByName
                     ordered={ordered}
                     page={page}
@@ -55,7 +55,7 @@ export default function Home() {
                 <DbOrApi
                     page={page}
                 />
-            </Container_General>
+            </CONTAINER_GENERAL>
 
             <Recipes
                 recipesCopy={recipesCopy} // array
@@ -65,6 +65,6 @@ export default function Home() {
                 recipesCopy={recipesCopy.length}
                 page={page}
             />
-        </HomeContainer>
+        </HOME_CONTAINER>
     )
 }

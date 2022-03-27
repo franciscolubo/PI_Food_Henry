@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-const first_color = "#dc8900";
+// const first_color = "#dc8900";
 const first_color_alt = "#FACD84";
 
-export const Container_General = styled.div`
+export const CONTAINER_GENERAL = styled.div`
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 15px;
 `;
 
-export const Container = styled.div`
+export const CONTAINER = styled.div`
     flex: auto;
     text-align: center;
     margin: 10px 0;

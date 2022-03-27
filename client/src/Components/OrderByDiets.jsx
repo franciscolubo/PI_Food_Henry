@@ -1,7 +1,7 @@
 import React from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
 import { orderByDiets } from '../actions'
-import { Container } from '../Style/OrdersBy-styled'
+import { CONTAINER } from '../Style/OrdersBy-styled'
 
 export default function OrderByDiets({ ordered }) {
     const dispatch = useDispatch()
@@ -14,7 +14,7 @@ export default function OrderByDiets({ ordered }) {
     }
 
     return (
-        <Container>
+        <CONTAINER>
             <p>Order by <span>diet</span>: </p>
             <select onChange={(e) => handleClick(e)}>
                 <option value='all'>All diets</option>
@@ -24,6 +24,6 @@ export default function OrderByDiets({ ordered }) {
                     })
                 }
             </select>
-        </Container>
+        </CONTAINER>
     )
 }

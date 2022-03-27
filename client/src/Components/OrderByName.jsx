@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { orderByName } from '../actions'
-import { Container } from '../Style/OrdersBy-styled'
+import { CONTAINER } from '../Style/OrdersBy-styled'
 
 export default function OrderByName({ ordered, page }) {
     const dispatch = useDispatch()
@@ -14,13 +14,13 @@ export default function OrderByName({ ordered, page }) {
     }
 
     return (
-        <Container>
+        <CONTAINER>
             <p>Order by <span>name</span>: </p>
             <select onChange={(e) => handleOrderName(e)}>
                 <option >Select order</option>
                 <option value='asc'>Ascendent</option>
                 <option value='des'>Descendent</option>
             </select>
-        </Container>
+        </CONTAINER>
     )
 }

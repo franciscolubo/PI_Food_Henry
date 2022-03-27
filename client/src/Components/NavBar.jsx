@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getRecipeName, getRecipes } from '../actions'
 import { Link } from 'react-router-dom'
-import { Buttons, Buttons_Div, Container, Container_SearchBar } from '../Style/NavBar-styled'
+import { BUTTONS, BUTTONS_DIV, CONTAINER, CONTAINER_SEARCHBAR } from '../Style/NavBar-styled'
 
 export default function NavBar({ page }) {
     const dispatch = useDispatch()
@@ -36,21 +36,21 @@ export default function NavBar({ page }) {
     }
 
     return (
-        <Container>
-            <Container_SearchBar>
+        <CONTAINER>
+            <CONTAINER_SEARCHBAR>
                 <input type='text' placeholder='Search recipe by name' onChange={(e) => handleChange(e)}></input>
                 <button type='submit' onClick={(e) => handleClick(e)}>
                     <img src='/search.svg' alt='search' />
                 </button>
-            </Container_SearchBar>
-            <Buttons_Div>
+            </CONTAINER_SEARCHBAR>
+            <BUTTONS_DIV>
 
-                <Buttons type='reset' onClick={(e) => handleClickReset(e)}><img src='/reset.svg' alt='reset' /></Buttons>
+                <BUTTONS type='reset' onClick={(e) => handleClickReset(e)}><img src='/reset.svg' alt='reset' /></BUTTONS>
 
                 <Link to={'/recipes'}>
-                    <Buttons><img src='/createfood.svg' alt='createrecipe' /></Buttons>
+                    <BUTTONS><img src='/createfood.svg' alt='createrecipe' /></BUTTONS>
                 </Link>
-            </Buttons_Div>
-        </Container>
+            </BUTTONS_DIV>
+        </CONTAINER>
     )
 }

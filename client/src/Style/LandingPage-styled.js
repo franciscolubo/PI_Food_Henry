@@ -1,10 +1,9 @@
-import React from 'react'
 import styled from 'styled-components'
 
 const first_color = "#dc8900";
 const first_color_alt = "#FACD84";
 
-export const Container = styled.div`
+export const CONTAINER = styled.div`
     display: flex;
     flex-direction: column-reverse;
     background: ${first_color};
@@ -16,7 +15,7 @@ export const Container = styled.div`
     }
 `;
 
-export const Container_Left = styled.div`
+export const CONTAINER_LEFT = styled.div`
     flex: .4;
     padding: 50px 20px;
 
@@ -63,7 +62,7 @@ export const Container_Left = styled.div`
     }
 `;
 
-export const Container_Rigth = styled.div`
+export const CONTAINER_RIGHT = styled.div`
     flex: .6;
     img{
         width: 100%;
@@ -76,7 +75,7 @@ export const Container_Rigth = styled.div`
     }
 `;
 
-export const Button = styled.button`
+export const BUTTON = styled.button`
     width: 100%;
     padding: 15px 0px;
     border: none;

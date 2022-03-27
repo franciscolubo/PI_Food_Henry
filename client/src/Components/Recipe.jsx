@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ShowRecipe } from '../Style/Recipes-styled'
+import { SHOW_RECIPE } from '../Style/Recipes-styled'
 
 export default function Recipe({ title, image, diets, score, id }) {
     console.log(image.length)
@@ -8,7 +8,7 @@ export default function Recipe({ title, image, diets, score, id }) {
 
     return (
 
-        <ShowRecipe>
+        <SHOW_RECIPE>
             {
                 (image.length === 0)
                     ? <img alt='img' src='https://www.verte.tv/thumb/28831/800-null-92/interrogacion.jpeg' />
@@ -26,7 +26,7 @@ export default function Recipe({ title, image, diets, score, id }) {
                 </div>
             </div>
             <Link to={`/recipes/${id}`}><button>More details</button></Link>
-        </ShowRecipe>
+        </SHOW_RECIPE>
 
     )
 }
