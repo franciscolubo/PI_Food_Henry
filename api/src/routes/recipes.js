@@ -46,15 +46,19 @@ router.get('/:idRecipe', async (req, res) => {
 router.post('/recipe', async (req, res) => {
     let { title, summary, healthScore, image, score, diets, steps } = req.body
     try {
-        let newRecipe = await Recipe.create({
-            title,
-            summary,
-            score,
-            healthScore,
-            steps,
-            image,
+        let newRecipe = await Recipe.findOrCreate({
+            where: {
+                title: title
+            },
+            defaults: {
+                title,
+                summary: summary.slice(0, 255),
+                score,
+                healthScore,
+                steps,
+                image,
+            }
         })
-        
         let newDiets = await Diet.findAll({
             where: {
                 name: diets
@@ -62,6 +66,7 @@ router.post('/recipe', async (req, res) => {
         })
         
         newRecipe.addDiet(newDiets)
+        console.log(newRecipe)
         res.status(201).json(newRecipe)
     } catch (error) {
         res.send(error)

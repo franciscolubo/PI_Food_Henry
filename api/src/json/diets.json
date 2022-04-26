@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "name": "gluten free",
+        "createdAt": "2022-04-26T20:42:35.197Z",
+        "updatedAt": "2022-04-26T20:42:35.197Z"
+    },
+    {
+        "id": 2,
+        "name": "dairy free",
+        "createdAt": "2022-04-26T20:42:35.444Z",
+        "updatedAt": "2022-04-26T20:42:35.444Z"
+    },
+    {
+        "id": 3,
+        "name": "primal",
+        "createdAt": "2022-04-26T20:42:35.461Z",
+        "updatedAt": "2022-04-26T20:42:35.461Z"
+    },
+    {
+        "id": 4,
+        "name": "fodmap friendly",
+        "createdAt": "2022-04-26T20:42:35.485Z",
+        "updatedAt": "2022-04-26T20:42:35.485Z"
+    },
+    {
+        "id": 5,
+        "name": "pescatarian",
+        "createdAt": "2022-04-26T20:42:35.462Z",
+        "updatedAt": "2022-04-26T20:42:35.462Z"
+    },
+    {
+        "id": 6,
+        "name": "lacto ovo vegetarian",
+        "createdAt": "2022-04-26T20:42:35.453Z",
+        "updatedAt": "2022-04-26T20:42:35.453Z"
+    },
+    {
+        "id": 7,
+        "name": "paleolithic",
+        "createdAt": "2022-04-26T20:42:35.460Z",
+        "updatedAt": "2022-04-26T20:42:35.460Z"
+    },
+    {
+        "id": 8,
+        "name": "vegan",
+        "createdAt": "2022-04-26T20:42:35.455Z",
+        "updatedAt": "2022-04-26T20:42:35.455Z"
+    },
+    {
+        "id": 9,
+        "name": "whole 30",
+        "createdAt": "2022-04-26T20:42:35.500Z",
+        "updatedAt": "2022-04-26T20:42:35.500Z"
+    },
+    {
+        "id": 10,
+        "name": "vegetarian",
+        "createdAt": "2022-04-26T20:42:35.504Z",
+        "updatedAt": "2022-04-26T20:42:35.504Z"
+    },
+    {
+        "id": 11,
+        "name": "ketogenic",
+        "createdAt": "2022-04-26T20:42:35.507Z",
+        "updatedAt": "2022-04-26T20:42:35.507Z"
+    }
+]

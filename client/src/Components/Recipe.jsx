@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { SHOW_RECIPE } from '../Style/Recipes-styled'
 
 export default function Recipe({ title, image, diets, score, id }) {
-    console.log(image.length)
-    console.log(image)
 
     return (
 
