@@ -11,6 +11,7 @@ import DbOrApi from "./DbOrApi.jsx";
 import { CONTAINER_GENERAL } from "../Style/OrdersBy-styled.js";
 import { HOME_CONTAINER } from "../Style/Home-styled.js";
 import Loading from "./Loading.jsx";
+import NotFound from "./NotFound.jsx";
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -69,16 +70,18 @@ export default function Home() {
             {
                 loading === false ?
                     <Loading />
-                    : <div>
-                        <Recipes
-                            recipesCopy={recipesCopy} // array
-                            currentPage={currentPage} // 2
-                        />
-                        <Pagination
-                            recipesCopy={recipesCopy.length}
-                            page={page}
-                        />
-                    </div>
+                    : recipesCopy.length > 0 ?
+                        <div>
+                            <Recipes
+                                recipesCopy={recipesCopy} // array
+                                currentPage={currentPage} // 2
+                            />
+                            <Pagination
+                                recipesCopy={recipesCopy.length}
+                                page={page}
+                            />
+                        </div>
+                        : <NotFound />
             }
         </HOME_CONTAINER>
     )
