@@ -116,4 +116,8 @@ router.delete('/delete/:idRecipe', async (req, res) => {
     } 
 })
 
+// router.use((req, res) => {
+//     res.status(404).send('Not found')
+// })
+
 module.exports = router
