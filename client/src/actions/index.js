@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getRecipes() {
     return async function(dispatch) {
-        const json = await axios.get('http://localhost:3001/recipes')
+        const json = await axios.get('/recipes')
         return dispatch({
             type: '@get_recipes',
             payload: json.data
@@ -12,7 +12,7 @@ export function getRecipes() {
 
 export function getRecipeName(name) {
     return async function(dispatch) {
-        const json = await axios.get(`http://localhost:3001/recipes?name=${name}`)
+        const json = await axios.get(`/recipes?name=${name}`)
         return dispatch({
             type: '@get_recipes_name',
             payload: json.data
@@ -36,7 +36,7 @@ export function orderByScore(payload) {
 
 export function getDiets() {
     return async function(dispatch) {
-        const json = await axios.get('http://localhost:3001/types')
+        const json = await axios.get('/types')
         return dispatch({
             type: '@get_diets',
             payload: json.data
@@ -53,7 +53,7 @@ export function orderByDiets(payload) {
 
 export function recipeDetail(recipeId) {
     return async function(dispatch) {
-        const json = await axios.get(`http://localhost:3001/recipes/${recipeId}`)
+        const json = await axios.get(`/recipes/${recipeId}`)
         return dispatch({
             type: '@recipe_detail',
             payload: json.data
@@ -63,7 +63,7 @@ export function recipeDetail(recipeId) {
 
 export function addRecipeDb(recipe) {
     return async function (dispatch) {
-        const addRecipe = await axios.post('http://localhost:3001/recipes/recipe', recipe)
+        const addRecipe = await axios.post('/recipes/recipe', recipe)
         return addRecipe
     }
 }
@@ -77,14 +77,14 @@ export function DbOrApiActions(payload) {
 
 export function editDataBase(editRecipe, id){
     return async function (dispatch) {
-        const newEdit = await axios.put(`http://localhost:3001/recipes/edit/${id}`, editRecipe)
+        const newEdit = await axios.put(`/recipes/edit/${id}`, editRecipe)
         return newEdit
     }
 }
 
 export function deleteRecipe(id){
     return async function (dispatch) {
-        const deleteRecip = await axios.delete(`http://localhost:3001/recipes/delete/${id}`)
+        const deleteRecip = await axios.delete(`/recipes/delete/${id}`)
         return alert('Receta eliminada')
     }
 }
