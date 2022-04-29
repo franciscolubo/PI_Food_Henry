@@ -35,7 +35,7 @@ export default function Home() {
     useEffect(() => {
         setTimeout(() => {
             setLoading(true)
-        }, 1000)
+        }, 3000)
     }, [recipesCopy.length > 0])
     console.log(recipesCopy)
     if (recipesCopy.length === 100) {
